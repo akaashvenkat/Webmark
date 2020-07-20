@@ -1,0 +1,78 @@
+* {
+  font-family: "Nunito Sans";
+}
+body {
+  background-color: #ECECE2;
+}
+
+#header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+
+#logo{
+	margin-left: 15px;
+}
+
+#searchfilter{
+	margin: 100px auto;
+	flex-direction: row;
+	align-content: center;
+	justify-content: space-between;
+	padding: 0px 7.5%;
+	white-space: nowrap;
+}
+
+#link{
+	margin: 0 auto;
+	width: 75%;
+	background-color: #ECECE2;
+	border-style: none none solid none;
+	font-size: 33px;
+	color: black;
+	border-color: black;
+	font-weight: bold;
+}
+
+::placeholder{
+  color:  #FF8E2D;
+  font-weight: bold;
+}
+
+#link:hover{
+	cursor: pointer;
+}
+
+#link:focus{
+	outline: none;
+	border-color: #FF8E2D;
+}
+
+input:focus::placeholder{
+	opacity: 0;
+}
+
+#filter{
+	margin: 0 auto;
+	border-color: #FF8E2D;
+	border-style: solid;
+	background-color: #ECECE2;
+	border-radius: 8px;
+	width:20%;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+#filter:hover{
+	cursor: pointer;
+}
+
+#filter:focus{
+	border-color: red;
+	outline: none;
+}
+
