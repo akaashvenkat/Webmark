@@ -11,14 +11,18 @@ users_api = Blueprint('users_api', __name__)
 
 @users_api.route('/create', methods=['POST'])
 def create_user():
+    
     try:
         data = request.form.to_dict()
         email = data['email']
         password = data['password']
         display_name = data['display_name']
+
         user = firebase_auth.create_user(email=email, password=password, display_name=display_name)
         user_data = jsonify(user_id=user.uid)
+
         return user_data, 201
+
     except firebase_auth_utils.EmailAlreadyExistsError:
         return {'error': 'email already exists'}, 400
     except firebase_auth_utils.UnexpectedResponseError:
@@ -30,19 +34,24 @@ def create_user():
 @users_api.route('/info', methods=['GET'])
 @auth.login_required
 def get_user():
+
     user_id = g.uid
     user = firebase_auth.get_user(user_id)
     user_data = jsonify(user_id=user_id, display_name=user.display_name, email=user.email)
+
     return user_data
 
 
 @users_api.route('/info/<string:user_id>', methods=['GET'])
 @auth.login_required
 def get_user_with_id(user_id):
+
     try:
         user = firebase_auth.get_user(user_id)
         user_data = jsonify(user_id=user_id, display_name=user.display_name, email=user.email)
+
         return user_data, 200
+
     except firebase_auth_utils.UserNotFoundError:
         return {'error': 'user id not found'}, 400
 
@@ -50,13 +59,17 @@ def get_user_with_id(user_id):
 @users_api.route('/update', methods=['POST'])
 @auth.login_required
 def update_user():
+
     try:
         data = request.form.to_dict()
         email = data['email']
         display_name = data['display_name']
+
         user_id = g.uid
         user = firebase_auth.update_user(user_id, email=email, display_name=display_name)
+
         return "User Updated", 201
+
     except firebase_auth_utils.UserNotFoundError:
         return {'error': 'user id not found'}, 400
     except firebase_auth_utils.EmailAlreadyExistsError:
@@ -70,9 +83,12 @@ def update_user():
 @users_api.route('/delete', methods=['DELETE'])
 @auth.login_required
 def delete_user():
+
     try:
         user_id = g.uid
         firebase_auth.delete_user(user_id)
+
         return "User Deleted", 200
+
     except firebase_auth_utils.UserNotFoundError:
         return {'error': 'user id not found'}, 400
