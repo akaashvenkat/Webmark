@@ -5,6 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 
 from src.TokenAuthentication import auth
+from src.ItemsAPI import items_api
 from src.UsersAPI import users_api
 
 
@@ -12,6 +13,7 @@ cred = credentials.Certificate("full_path_to/instance/webmark_firebase_admin_key
 firebase_admin.initialize_app(cred)
 
 app = Flask(__name__)
+app.register_blueprint(items_api, url_prefix='/items')
 app.register_blueprint(users_api, url_prefix='/users')
 
 
