@@ -29,7 +29,7 @@ def create_item():
     url = update_url(url)
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%s")
-    order = 1
+    order = 0
     owner_uid = g.uid
 
     response, response_code = get_items()
@@ -58,7 +58,7 @@ def create_item():
 
     new_item = item.to_dict()
     new_item['item_id'] = new_item_ref.id
-    
+
     return new_item, 201
 
 
