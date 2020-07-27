@@ -2,6 +2,7 @@ from datetime import datetime
 from firebase_admin import firestore
 from flask import Blueprint, request, g
 from requests.exceptions import ConnectionError, InvalidURL
+from selenium import webdriver
 
 from src.TokenAuthentication import auth
 from src.Item import Item
@@ -26,8 +27,12 @@ def create_item():
         url = "http://" + url
     if validate_url(url) == False:
         return {'error': 'invalid url'}, 400
-    url = update_url(url)
 
+    screenshot = get_base_64(url)
+    if screenshot == False:
+        screenshot = "screenshot unavailable"
+
+    url = update_url(url)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%s")
     order = 0
     owner_uid = g.uid
@@ -47,7 +52,7 @@ def create_item():
             except:
                 return {'error': 'something went wrong'}, 500
 
-    item = Item(url=url, timestamp=timestamp, order=order, owner_uid=owner_uid)
+    item = Item(url=url, timestamp=timestamp, order=order, owner_uid=owner_uid, screenshot=screenshot)
     db = firestore.client()
 
     try:
@@ -157,6 +162,24 @@ def validate_url(url):
         return False
     else:
         return True
+
+
+def get_base_64(url):
+
+    options = webdriver.ChromeOptions()
+    options.headless = True
+
+    driver = webdriver.Chrome(options=options)
+    driver.set_window_size(1024, 768)
+
+    try:
+        driver.get(url)
+        base_64 = driver.get_screenshot_as_base64()
+    except Exception as e:
+        base_64 = False
+
+    driver.quit()
+    return base_64
 
 
 def update_url(url):
