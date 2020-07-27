@@ -114,8 +114,8 @@ def delete_item(item_id):
     if response_code != 200:
         return response, response_code
 
-    item = Item.from_dict(response)
-    if item.owner_uid != g.uid:
+    del_item = Item.from_dict(response)
+    if del_item.owner_uid != g.uid:
         return {'error': 'user does not own this item'}, 401
 
     db = firestore.client()
@@ -124,7 +124,26 @@ def delete_item(item_id):
     except:
         return {'error': 'something went wrong'}, 500
 
-    return item.to_dict(), 200
+    response, response_code = get_items()
+    if len(response) != 0:
+        for item_id in response:
+            item_info = response[item_id]
+            item = Item.from_dict(item_info)
+            cur_order = item_info['order']
+
+            if cur_order < del_item.order:
+                continue
+
+            new_order = cur_order - 1
+            item.update(order=new_order)
+
+            db = firestore.client()
+            try:
+                db.collection('items').document(item_id).update(item.to_dict())
+            except:
+                return {'error': 'something went wrong'}, 500
+
+    return del_item.to_dict(), 200
 
 
 
