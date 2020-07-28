@@ -19,7 +19,7 @@ body {
 }
 
 #searchfilter{
-	margin: 75px auto 0px auto;
+	margin: 75px auto 25px auto;
 	flex-direction: row;
 	align-content: center;
 	justify-content: space-around;
@@ -27,7 +27,7 @@ body {
 	white-space: nowrap;
 }
 
-#link{
+#enter_link{
 	margin: 0 auto;
 	width: 75%;
 	background-color: #ECECE2;
@@ -43,11 +43,11 @@ body {
   font-weight: bold;
 }
 
-#link:hover{
+#enter_link:hover{
 	cursor: pointer;
 }
 
-#link:focus{
+#enter_link:focus{
 	outline: none;
 	border-color: #FF8E2D;
 }
@@ -78,7 +78,7 @@ input:focus::placeholder{
 
 #WebMarks{
 	display: flex;
-	margin: 50px auto;
+	margin: 25px auto 0px auto;
 	flex-direction: column;
 	align-content: center;
 	width: 85%;
@@ -130,7 +130,6 @@ input:focus::placeholder{
 #secondrow{
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 25px;
 	width: 100%;
 }
 
@@ -139,6 +138,8 @@ input:focus::placeholder{
 	margin-bottom:50px;
 	width: 50%;
 	margin-right: 50px;
+	height: 300px;
+
 }
 
 #four iframe{
@@ -150,6 +151,7 @@ input:focus::placeholder{
 	display: flex;
 	margin-bottom:50px;
 	width: 50%;
+	height: 300px;
 }
 
 #five iframe{
