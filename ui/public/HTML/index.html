@@ -12,6 +12,7 @@
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="../Javascript/confirm_password.js" defer></script>
 
    <script>
       function onSignIn(googleUser) {
@@ -51,8 +52,9 @@
 			<input type="text" id="email" placeholder="Email"><br>
 			<input type="text" id="username" placeholder="Username"><br>
 			<div id="passwordrow">
-				<input type="password" id="password" placeholder="Password"><br>
-				<input type="password" id="confirmpassword" placeholder="Confirm Password"><br>
+				<input type="password" id="password" placeholder="Password" onkeyup="checkPass();"><br>
+				<input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
+				<span id="confirm-message2" class="confirm-message"></span>
 			</div> <br>
 			<button id="signin" type="button">Sign Up</button>
 			<div id="or">
@@ -68,6 +70,20 @@
 
 
 </div>
+
+ <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="/__/firebase/7.17.1/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="/__/firebase/7.17.1/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="/__/firebase/7.17.1/firebase-auth.js"></script>
+  <script src="/__/firebase/7.17.1/firebase-firestore.js"></script>
+
+  <script src="../config/config.js"></script>
 
 </body>
 
