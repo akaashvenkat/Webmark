@@ -8,6 +8,7 @@
     <!-- <meta property="og:url" content="http://siegelux.com" /> -->
 
     <link rel="stylesheet" href="../css/index.css"></link>
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sansn&display=swap" rel="stylesheet">
 
     <meta name="google-signin-scope" content="profile email">
@@ -50,6 +51,7 @@
 
       <div id="header">
 	       <img id="logo" src="../images/logo.png">
+         <button id="signup" type="button" onclick="toggleSignIn()">Sign In</button>
       </div>
 
       <div id="midsection">
@@ -74,9 +76,21 @@
 			            <div id="or">
 				                <span>or</span>
 			            </div>
-			            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <br>
 
-			            <button id="signup" type="button" onclick="toggleSignIn()">Sign In</button>
+			      <div class='g-sign-in-button'>
+              <div class=content-wrapper>
+              <div class='logo-wrapper'>  
+                <img src='https://developers.google.com/identity/images/g-logo.png'>
+                </div>  
+                <span class='text-container'> 
+                  <span>Sign in with Google</span>
+                </span>
+              </div>  
+            </div>
+
+
+                  <br>
+
 			       </form>
 	       </div>
       </div>
