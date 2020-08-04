@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="WebMark" />
-<meta property="og:image" content="../images/metalogo.png" />
-<!-- <meta property="og:url" content="http://siegelux.com" /> -->
-<link rel="stylesheet" href="../css/index.css"></link>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sansn&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="WebMark" />
+    <meta property="og:image" content="../images/metalogo.png" />
+    <!-- <meta property="og:url" content="http://siegelux.com" /> -->
 
-<meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="Y744549546542-aoklr7c03ap04k82sknifa021mgar1pv.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="../Javascript/confirm_password.js" defer></script>
-<script src="../Javascript/signup_signin.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sansn&display=swap" rel="stylesheet">
 
-   <script>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="Y744549546542-aoklr7c03ap04k82sknifa021mgar1pv.apps.googleusercontent.com">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../Javascript/confirm_password.js" defer></script>
+    <script type="text/javascript" src="../Javascript/signup_signin.js" defer></script>
+
+    <script>
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -32,61 +34,51 @@
       }
     </script>
 
-<title>WebMark</title>
+    <title>WebMark</title>
 
-<body>
+    <body>
 
-<div id="header">
-	<img id="logo" src="../images/logo.png">
-</div>
+      <script src="../config/config.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
 
-<div id="midsection">
+      <script>
+        firebase.initializeApp(firebaseConfig);
+      </script>
 
-	<div id="leftmid">
-		<div id="welcome">Welcome to <br>
-		WebMark</div>
-		<img src="../images/frontpage_photo.png">
-	</div>
+      <div id="header">
+	       <img id="logo" src="../images/logo.png">
+      </div>
 
-	<div id="rightmid">
-		<form id="signupform">
-			<input type="text" id="email" placeholder="Email"><br>
-			<input type="text" id="username" placeholder="Username"><br>
-			<div id="passwordrow">
-				<input type="password" id="password" placeholder="Password" onkeyup="checkPass();"><br>
-				<input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
-				<span id="confirm-message2" class="confirm-message"></span>
-			</div> <br>
-			<button id="signin" type="button">Sign Up</button>
-			<div id="or">
-				<span>or</span>
-			</div>
-			<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <br>
+      <div id="midsection">
+	       <div id="leftmid">
+		         <div id="welcome">Welcome to <br>
+		             WebMark</div>
+		         <img src="../images/frontpage_photo.png">
+	       </div>
 
-			<button id="signup" type="button">Sign In</button>
+	       <div id="rightmid">
+		         <form id="signupform">
+			            <input type="text" id="email" placeholder="Email"><br>
+			            <input type="text" id="username" placeholder="Username"><br>
 
-			</form>
-	</div>
+			            <div id="passwordrow">
+				                <input type="password" id="password" placeholder="Password" onkeyup="checkPass();"><br>
+				                <input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
+				                <span id="confirm-message2" class="confirm-message"></span>
+			            </div> <br>
 
+			            <button id="signin" type="button" onclick="handleSignUp()">Sign Up</button>
+			            <div id="or">
+				                <span>or</span>
+			            </div>
+			            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> <br>
 
-
-</div>
-
- <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="/__/firebase/7.17.1/firebase-app.js"></script>
-
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <script src="/__/firebase/7.17.1/firebase-analytics.js"></script>
-
-  <!-- Add Firebase products that you want to use -->
-  <script src="/__/firebase/7.17.1/firebase-auth.js"></script>
-  <script src="/__/firebase/7.17.1/firebase-firestore.js"></script>
-
-  <script src="../config/config.js"></script>
-
-</body>
-
+			            <button id="signup" type="button" onclick="toggleSignIn()">Sign In</button>
+			       </form>
+	       </div>
+      </div>
+  </body>
 </html>
-
