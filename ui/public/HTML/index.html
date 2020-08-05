@@ -33,6 +33,17 @@
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       }
+
+            // Get the modal
+      var modal = document.getElementById('id01');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+
     </script>
 
     <title>WebMark</title>
@@ -51,7 +62,7 @@
 
       <div id="header">
 	       <img id="logo" src="../images/logo.png">
-         <button id="signup" type="button" onclick="toggleSignIn()">Sign In</button>
+         <button id="signin" type="button" onclick="document.getElementById('id01').style.display='block'" >Sign In</button>
       </div>
 
       <div id="midsection">
@@ -71,13 +82,56 @@
 				                <input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
 				                <span id="confirm-message2" class="confirm-message"></span>
 			            </div> <br>
-
-			            <button id="signin" type="button" onclick="handleSignUp()">Sign Up</button>
+                  <div id="signupdiv">
+			             <button id="signup" type="button" onclick="handleSignUp()">Sign Up</button>
+                  </div>
 			            <div id="or">
 				                <span>or</span>
 			            </div>
-
+          <div id="googlesignupdiv">
 			      <div class='g-sign-in-button'>
+              <div class=content-wrapper>
+              <div class='logo-wrapper'>  
+                <img src='https://developers.google.com/identity/images/g-logo.png'>
+                </div>  
+                <span class='text-container'> 
+                  <span>Sign up with Google</span>
+                </span>
+              </div>  
+            </div>
+            </div>
+
+                  <br>
+
+			       </form>
+	       </div>
+      </div>
+
+      <div id="id01" class="modal">
+        
+        <form class="modal-content animate" action="/action_page.php" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          </div>
+
+          <div class="container">
+            <input type="text" placeholder="Username" name="uname" required>
+
+            <input type="password" placeholder="Password" name="psw" required>
+              
+            <button id="signinlogin" type="submit" onclick="toggleSignIn()" style="font-size: 18px">Login</button>
+          
+              <span class="psw">Forgot <a href="#">password?</a></span>
+
+          </div>
+
+
+          <div id="orsignin">
+                        <span>or</span>
+          </div>
+
+          <div id="googlesignindiv">
+            <div class='g-sign-in-button'>
               <div class=content-wrapper>
               <div class='logo-wrapper'>  
                 <img src='https://developers.google.com/identity/images/g-logo.png'>
@@ -87,12 +141,12 @@
                 </span>
               </div>  
             </div>
+            </div>
 
 
-                  <br>
 
-			       </form>
-	       </div>
+        </form>
       </div>
+
   </body>
 </html>
