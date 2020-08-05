@@ -11,14 +11,13 @@ users_api = Blueprint('users_api', __name__)
 
 @users_api.route('/create', methods=['POST'])
 def create_user():
-    
+
     try:
         data = request.form.to_dict()
         email = data['email']
         password = data['password']
-        display_name = data['display_name']
 
-        user = firebase_auth.create_user(email=email, password=password, display_name=display_name)
+        user = firebase_auth.create_user(email=email, password=password)
         user_data = jsonify(user_id=user.uid)
 
         return user_data, 201
@@ -37,7 +36,7 @@ def get_user():
 
     user_id = g.uid
     user = firebase_auth.get_user(user_id)
-    user_data = jsonify(user_id=user_id, display_name=user.display_name, email=user.email)
+    user_data = jsonify(user_id=user_id, email=user.email)
 
     return user_data
 
@@ -48,7 +47,7 @@ def get_user_with_id(user_id):
 
     try:
         user = firebase_auth.get_user(user_id)
-        user_data = jsonify(user_id=user_id, display_name=user.display_name, email=user.email)
+        user_data = jsonify(user_id=user_id, email=user.email)
 
         return user_data, 200
 
@@ -63,10 +62,9 @@ def update_user():
     try:
         data = request.form.to_dict()
         email = data['email']
-        display_name = data['display_name']
 
         user_id = g.uid
-        user = firebase_auth.update_user(user_id, email=email, display_name=display_name)
+        user = firebase_auth.update_user(user_id, email=email)
 
         return "User Updated", 201
 
