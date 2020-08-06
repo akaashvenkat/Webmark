@@ -13,4 +13,7 @@ function checkPass()
     if(password.value == confirm.value){
         confirm.style.backgroundColor = good_color;
     }
+    else{
+        confirm.style.backgroundColor = bad_color;
+    }
 }  
