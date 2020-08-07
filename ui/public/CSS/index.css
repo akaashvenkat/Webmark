@@ -13,9 +13,12 @@ body {
 	padding-bottom: 10px;
 	border-bottom: 1px solid black;
 }
+
 #logo{
+	width: 200px;
 	margin-left: 15px;
 }
+
 #signin{
 	width: 163px;
 	height: 50px;
@@ -149,6 +152,7 @@ input{
 	border-radius: 8px;
 	border-color: black;
 	align-self: center;
+	cursor: pointer;
 
 }
 
@@ -169,6 +173,7 @@ input{
 	background-color: #FF8E2D;
 	border-radius: 8px;
 	border-color: black;
+	cursor: pointer;
 }
 
 #googlesignupdiv{
