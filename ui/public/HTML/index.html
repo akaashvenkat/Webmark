@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="WebMark" />
     <meta property="og:image" content="../images/metalogo.png" />
-    <!-- <meta property="og:url" content="http://siegelux.com" /> -->
 
     <link rel="stylesheet" href="../css/index.css"></link>
-
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sansn&display=swap" rel="stylesheet">
 
     <meta name="google-signin-scope" content="profile email">
@@ -16,32 +16,27 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../Javascript/confirm_password.js" defer></script>
-    <script type="text/javascript" src="../Javascript/signup_signin.js" defer></script>
 
     <script>
       function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("ID: " + profile.getId());
         console.log('Full Name: ' + profile.getName());
         console.log('Given Name: ' + profile.getGivenName());
         console.log('Family Name: ' + profile.getFamilyName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
 
-        // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       }
 
-            // Get the modal
       var modal = document.getElementById('id01');
 
-      // When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
       }
 
     </script>
@@ -49,16 +44,6 @@
     <title>WebMark</title>
 
     <body>
-
-      <script src="../config/config.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-
-      <script>
-        firebase.initializeApp(firebaseConfig);
-      </script>
 
       <div id="header">
 	       <img id="logo" src="../images/logo.png">
@@ -82,7 +67,7 @@
 				                <span id="confirm-message2" class="confirm-message"></span>
 			            </div> <br>
                   <div id="signupdiv">
-			             <button id="signup" type="button" onclick="handleSignUp()">Sign Up</button>
+			             <button id="signup" type="button">Sign Up</button>
                   </div>
 			            <div id="or">
 				                <span>or</span>
@@ -116,7 +101,7 @@
 
             <input type="password" id="modal_password" placeholder="Password" name="psw" required>
 
-            <button id="signinlogin" type="submit" onclick="return toggleSignIn()" style="font-size: 18px">Login</button>
+            <button id="login" type="button" style="font-size: 18px">Login</button>
 
               <span class="psw">Forgot <a href="#">password</a> ?</span>
 
@@ -141,5 +126,13 @@
             </div>
         </form>
       </div>
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+      <script src="../config/config.js"></script>
+      <script src="../Javascript/email_auth.js"></script>
+
   </body>
 </html>
