@@ -10,7 +10,10 @@ function checkPass()
     var bad_color  = "#ff6666";
     //Compare the values in the password field 
     //and the confirmation field
-    if(password.value == confirm.value){
+    if((password.value != confirm.value & confirm.value == 0) | (password.value == confirm.value & confirm.value == 0)){
+        confirm.style.backgroundColor = 'white';
+    }
+    else if(password.value == confirm.value){
         confirm.style.backgroundColor = good_color;
     }
     else{

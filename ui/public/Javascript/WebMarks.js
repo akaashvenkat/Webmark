@@ -12,7 +12,6 @@
 
 
     function addWebMark() {
-            beginning_url = 'https://www.';
 
             if (counter%5  == 0){ 
 
@@ -28,11 +27,15 @@
                 one_mark.setAttribute("id", "one");
                 first_row.appendChild(one_mark);
 
-                one_iframe = document.createElement('iframe');
-                one_mark.appendChild(one_iframe);
+                // one_div = document.createElement('div');
+                // one_mark.appendChild(one_div);
+ 
 
-                user_url = document.getElementById("enter_link").value
-                one_iframe.src = beginning_url.concat(user_url,'/');
+                close = document.createElement('span');
+                close.innerHTML = "&times";
+                close.setAttribute("class","close");
+                one_mark.appendChild(close);
+
 
                 one_mark.scrollIntoView({behavior: "smooth"});
             }
@@ -48,11 +51,13 @@
                 two_mark.setAttribute("id", "two");
                 twothree_mark.appendChild(two_mark);
 
-                two_iframe = document.createElement('iframe');
-                two_mark.appendChild(two_iframe);
+                // two_div = document.createElement('div');
+                // two_mark.appendChild(two_div);
 
-                user_url = document.getElementById("enter_link").value
-                two_iframe.src = beginning_url.concat(user_url,'/');
+                close = document.createElement('span');
+                close.innerHTML = "&times";
+                close.setAttribute("class","close");
+                two_mark.appendChild(close);
 
                 two_mark.scrollIntoView({behavior: "smooth"});
             }
@@ -64,12 +69,14 @@
                 three_mark.setAttribute("id", "three");
                 twothree_mark.appendChild(three_mark);
 
-                three_iframe = document.createElement('iframe');
-                three_mark.appendChild(three_iframe);
+                // three_div = document.createElement('div');
+                // three_mark.appendChild(three_div);
 
-                user_url = document.getElementById("enter_link").value
-                three_iframe.src = beginning_url.concat(user_url,'/');
-                
+                close = document.createElement('span');
+                close.innerHTML = "&times";
+                close.setAttribute("class","close");
+                three_mark.appendChild(close);
+
                 three_mark.scrollIntoView({behavior: "smooth"});
             }
 
@@ -83,11 +90,13 @@
                 four_mark.setAttribute("id", "four");
                 second_row.appendChild(four_mark);
 
-                four_iframe = document.createElement('iframe');
-                four_mark.appendChild(four_iframe);
+                // four_div = document.createElement('div');
+                // four_mark.appendChild(four_div);
 
-                user_url = document.getElementById("enter_link").value
-                four_iframe.src = beginning_url.concat(user_url,'/');
+                close = document.createElement('span');
+                close.innerHTML = "&times";
+                close.setAttribute("class","close");
+                four_mark.appendChild(close);
 
                 four_mark.scrollIntoView({behavior: "smooth"});
             }
@@ -98,14 +107,20 @@
                 five_mark.setAttribute("id", "five");
                 second_row.appendChild(five_mark);
 
-                five_iframe = document.createElement('iframe');
-                five_mark.appendChild(five_iframe);
+                // five_div = document.createElement('div');
+                // five_mark.appendChild(five_div);
 
-                user_url = document.getElementById("enter_link").value
-                five_iframe.src = beginning_url.concat(user_url,'/');
+                close = document.createElement('span');
+                close.innerHTML = "&times";
+                close.setAttribute("class","close");
+                five_mark.appendChild(close);
+
 
                 five_mark.scrollIntoView({behavior: "smooth"});
 
             }
             counter = counter + 1;
         };
+
+
+
