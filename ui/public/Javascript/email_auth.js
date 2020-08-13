@@ -9,7 +9,6 @@
   const emailSignIn = document.getElementById('modal_email');
   const passwordSignIn = document.getElementById('modal_password');
   const buttonSignIn = document.getElementById('login');
-  const buttonPasswordReset = document.getElementById('forgot_password');
 
   buttonSignUp.addEventListener('click', e => {
     const email = emailSignUp.value;
@@ -73,33 +72,6 @@
           alert('The email you entered is not present in our system. Please try another email.');
         } else if (error.code == 'auth/wrong-password') {
           alert('The password typed is incorrect. Please try again.');
-        } else {
-          alert(error.message);
-        }
-        console.log(error);
-        return;
-    });
-  });
-
-  buttonPasswordReset.addEventListener('click', e => {
-    const email = emailSignIn.value;
-    const auth = firebase.auth();
-
-    if (email.length < 1) {
-      alert('Please enter an email.');
-      return;
-    }
-
-    auth.sendPasswordResetEmail(email)
-      .then(function(result) {
-        alert('Please check your email to reset your password.');
-        return;
-      })
-      .catch(function(error) {
-        if (error.code == 'auth/invalid-email') {
-          alert('The email address is not valid. Please use a valid email address.');
-        } else if (error.code == 'auth/user-not-found') {
-          alert('The email you entered is not present in our system. Please try another email.');
         } else {
           alert(error.message);
         }

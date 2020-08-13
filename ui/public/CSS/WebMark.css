@@ -1,6 +1,7 @@
 * {
-  font-family: "Nunito Sans";
+  /*font-family: "Nunito Sans";*/
 }
+
 body {
   background-color: #ECECE2;
 }
@@ -97,6 +98,7 @@ input:focus::placeholder{
 	border: 2px solid gray;
 	width: 65%;
 	margin-right: 50px;
+	height: 400px;
 }
 
 #one iframe{
@@ -163,9 +165,14 @@ input:focus::placeholder{
 	width: 100%;
 }
 
+
 .close {
 	display: none;
 	
+}
+
+.close:hover{
+	cursor: pointer;
 }
 
 #one:hover .close{
