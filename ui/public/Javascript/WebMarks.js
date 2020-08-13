@@ -1,4 +1,6 @@
-
+    
+    id = 0;
+    var number = document.createAttribute("number");
     counter = 0;
 
     enter_link = document.getElementById('enter_link');
@@ -13,6 +15,8 @@
 
     function addWebMark() {
 
+            id = id + 1;
+
             if (counter%5  == 0){ 
 
                 WebMarks_div = document.createElement('div');
@@ -25,16 +29,24 @@
 
                 one_mark = document.createElement('div');
                 one_mark.setAttribute("id", "one");
+                one_mark.setAttribute("number",id);
                 first_row.appendChild(one_mark);
 
-                // one_div = document.createElement('div');
-                // one_mark.appendChild(one_div);
+                one_div = document.createElement('div');
+                one_mark.appendChild(one_div);
  
 
-                close = document.createElement('span');
-                close.innerHTML = "&times";
-                close.setAttribute("class","close");
-                one_mark.appendChild(close);
+                one_close = document.createElement('span');
+                one_close.innerHTML = "&times";
+                one_close.setAttribute("class","close");
+                one_mark.appendChild(one_close);
+
+                one_close.addEventListener("click", function() {
+                    var x = one_close.parentElement.getAttribute("number");
+                    one_close.parentElement.remove();
+                    deleteWebMark(x);
+                });
+
 
 
                 one_mark.scrollIntoView({behavior: "smooth"});
@@ -49,15 +61,22 @@
 
                 two_mark = document.createElement('div');
                 two_mark.setAttribute("id", "two");
+                two_mark.setAttribute("number",id);
                 twothree_mark.appendChild(two_mark);
 
-                // two_div = document.createElement('div');
-                // two_mark.appendChild(two_div);
+                two_div = document.createElement('div');
+                two_mark.appendChild(two_div);
 
-                close = document.createElement('span');
-                close.innerHTML = "&times";
-                close.setAttribute("class","close");
-                two_mark.appendChild(close);
+                two_close = document.createElement('span');
+                two_close.innerHTML = "&times";
+                two_close.setAttribute("class","close");
+                two_mark.appendChild(two_close);
+
+                two_close.addEventListener("click", function() {
+                    var x = two_close.parentElement.getAttribute("number");
+                    two_close.parentElement.remove();
+                    deleteWebMark(x);
+                });
 
                 two_mark.scrollIntoView({behavior: "smooth"});
             }
@@ -67,15 +86,22 @@
 
                 three_mark = document.createElement('div');
                 three_mark.setAttribute("id", "three");
+                three_mark.setAttribute("number",id);
                 twothree_mark.appendChild(three_mark);
 
-                // three_div = document.createElement('div');
-                // three_mark.appendChild(three_div);
+                three_div = document.createElement('div');
+                three_mark.appendChild(three_div);
 
-                close = document.createElement('span');
-                close.innerHTML = "&times";
-                close.setAttribute("class","close");
-                three_mark.appendChild(close);
+                three_close = document.createElement('span');
+                three_close.innerHTML = "&times";
+                three_close.setAttribute("class","close");
+                three_mark.appendChild(three_close);
+
+                three_close.addEventListener("click", function() {
+                    var x = three_close.parentElement.getAttribute("number");
+                    three_close.parentElement.remove();
+                    deleteWebMark(x);
+                });
 
                 three_mark.scrollIntoView({behavior: "smooth"});
             }
@@ -88,15 +114,23 @@
 
                 four_mark = document.createElement('div');
                 four_mark.setAttribute("id", "four");
+                four_mark.setAttribute("number",id);
+                WebMarks_div.appendChild(four_mark);
                 second_row.appendChild(four_mark);
 
-                // four_div = document.createElement('div');
-                // four_mark.appendChild(four_div);
+                four_div = document.createElement('div');
+                four_mark.appendChild(four_div);
 
-                close = document.createElement('span');
-                close.innerHTML = "&times";
-                close.setAttribute("class","close");
-                four_mark.appendChild(close);
+                four_close = document.createElement('span');
+                four_close.innerHTML = "&times";
+                four_close.setAttribute("class","close");
+                four_mark.appendChild(four_close);
+
+                four_close.addEventListener("click", function() {
+                    var x = four_close.parentElement.getAttribute("number");
+                    four_close.parentElement.remove();
+                    deleteWebMark(x);
+                });
 
                 four_mark.scrollIntoView({behavior: "smooth"});
             }
@@ -105,22 +139,63 @@
 
                 five_mark = document.createElement('div');
                 five_mark.setAttribute("id", "five");
+                five_mark.setAttribute("number",id);
                 second_row.appendChild(five_mark);
 
-                // five_div = document.createElement('div');
-                // five_mark.appendChild(five_div);
+                five_div = document.createElement('div');
+                five_mark.appendChild(five_div);
 
-                close = document.createElement('span');
-                close.innerHTML = "&times";
-                close.setAttribute("class","close");
-                five_mark.appendChild(close);
+                five_close = document.createElement('span');
+                five_close.innerHTML = "&times";
+                five_close.setAttribute("class","close");
+                five_mark.appendChild(five_close);
+
+                five_close.addEventListener("click", function() {
+                    var x = five_close.parentElement.getAttribute("number");
+                    five_close.parentElement.remove();
+                    deleteWebMark(x);
+                });
 
 
                 five_mark.scrollIntoView({behavior: "smooth"});
 
             }
+
             counter = counter + 1;
         };
 
+    function deleteWebMark(x) {
 
+        console.log("id is:"+id+"");
+        console.log("number attr:"+x+"");
+
+       x = parseInt(x);
+
+        for (i = x+1; i < id; i++) {
+            console.log(i);
+            if(i%5 == 0){
+                console.log("TEST");
+                $("[number="+i+"]").attr("id","four");
+            }
+            else if(i%5 == 1){
+                console.log("TEST");
+                $("[number="+i+"]").attr("id","five");
+
+            }
+            else if(i%5 == 2){
+                console.log("TEST");
+                $("[number="+i+"]").attr("id","one");
+            }
+            else if(i%5 == 3){
+                console.log("TEST");
+                $("[number="+i+"]").attr("id","two");
+            }
+            else if(i%5 == 4){
+                console.log("TEST");
+                $("[number="+i+"]").attr("id","three");
+            }
+        }
+
+        id = id - 1;
+    };
 
