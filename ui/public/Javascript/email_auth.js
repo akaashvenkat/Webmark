@@ -47,6 +47,10 @@
     });
   });
 
+  async function updateToken (tok) {
+    sessionStorage.setItem('token', tok)
+  }
+
   buttonSignIn.addEventListener('click', e => {
     const email = emailSignIn.value;
     const pass = passwordSignIn.value;
@@ -65,7 +69,16 @@
 
     auth.signInWithEmailAndPassword(email, pass)
       .then(function(result) {
-        window.location.assign("./WebMark.html")
+        auth.currentUser.getIdToken(true)
+          .then(function (idToken) {
+            updateToken(idToken)
+              .then(function(result) {
+                window.location.assign("./WebMark.html")
+              });
+	         })
+          .catch(function (error) {
+            self.text = "ERROR:" + error.message;
+        });
       })
       .catch(function(error) {
         if (error.code == 'auth/invalid-email') {

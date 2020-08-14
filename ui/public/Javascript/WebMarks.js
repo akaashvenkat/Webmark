@@ -2,17 +2,55 @@ mark_id = 0;
 counter = 0;
 bigdivs = 0;
 
+var config = firebaseConfig;
+firebase.initializeApp(config);
+
+var token = sessionStorage.getItem('token');
 var number = document.createAttribute("number");
 var enter_link = document.getElementById('enter_link');
 
 enter_link.addEventListener('keyup', function (e) {
   if (e.keyCode == 13) {
-    addWebMark();
+    addWebMarkBackend();
   }
 });
 
-function addWebMark() {
+function addWebMarkBackend() {
+  const auth = firebase.auth();
 
+  if (token == null || token == "") {
+    alert('Please log in and try again.');
+    return;
+  }
+
+  const newInput = enter_link.value;
+
+  if (newInput.length < 1) {
+    alert('Please enter a url to add as a WebMark.');
+    return;
+  }
+
+  var url_data = {"url": newInput};
+  var server = "http://127.0.0.1:5000";
+  var appdir = "/items/create";
+
+  $.ajax({
+    type:"POST",
+    url: server + appdir,
+    data: url_data,
+    dataType: "json",
+    contentType: "application/x-www-form-urlencoded",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "token " + token);
+    },
+    success: function(res){
+      console.log(res);
+      addWebMarkFrontend();
+    }
+  })
+};
+
+function addWebMarkFrontend() {
   mark_id = mark_id + 1;
 
   if (counter % 5 == 0) {
@@ -30,7 +68,7 @@ function addWebMark() {
     one_mark = document.createElement('div');
     one_mark.setAttribute("id", "one");
     one_mark.setAttribute("class", "mark");
-    one_mark.setAttribute("number",mark_id);
+    one_mark.setAttribute("number", mark_id);
     first_row.appendChild(one_mark);
 
     one_div = document.createElement('div');
@@ -59,7 +97,7 @@ function addWebMark() {
     two_mark = document.createElement('div');
     two_mark.setAttribute("id", "two");
     two_mark.setAttribute("class", "mark");
-    two_mark.setAttribute("number",mark_id);
+    two_mark.setAttribute("number", mark_id);
     twothree_mark.appendChild(two_mark);
 
     two_div = document.createElement('div');
@@ -84,7 +122,7 @@ function addWebMark() {
     three_mark = document.createElement('div');
     three_mark.setAttribute("id", "three");
     three_mark.setAttribute("class", "mark");
-    three_mark.setAttribute("number",mark_id);
+    three_mark.setAttribute("number", mark_id);
     twothree_mark.appendChild(three_mark);
 
     three_div = document.createElement('div');
@@ -113,7 +151,7 @@ function addWebMark() {
     four_mark = document.createElement('div');
     four_mark.setAttribute("id", "four");
     four_mark.setAttribute("class", "mark");
-    four_mark.setAttribute("number",mark_id);
+    four_mark.setAttribute("number", mark_id);
     WebMarks_div.appendChild(four_mark);
     second_row.appendChild(four_mark);
 
@@ -139,7 +177,7 @@ function addWebMark() {
     five_mark = document.createElement('div');
     five_mark.setAttribute("id", "five");
     five_mark.setAttribute("class", "mark");
-    five_mark.setAttribute("number",mark_id);
+    five_mark.setAttribute("number", mark_id);
     second_row.appendChild(five_mark);
 
     five_div = document.createElement('div');
@@ -164,7 +202,7 @@ function addWebMark() {
 
 function deleteWebMark(x) {
   mark_id = parseInt(mark_id);
-  last_element_id = mark_id-1;
+  last_element_id = mark_id - 1;
 
   array = document.getElementsByClassName("mark");
   array[last_element_id].remove();
