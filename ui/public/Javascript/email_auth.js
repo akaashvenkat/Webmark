@@ -3,13 +3,14 @@
   var config = firebaseConfig;
   firebase.initializeApp(config);
 
-  const emailSignUp = document.getElementById('email');
-  const passwordSignUp = document.getElementById('password');
-  const buttonSignUp = document.getElementById('signup');
-  const emailSignIn = document.getElementById('modal_email');
-  const passwordSignIn = document.getElementById('modal_password');
-  const buttonSignIn = document.getElementById('login');
-  const buttonPasswordReset = document.getElementById('forgot_password');
+  const emailSignUp = document.getElementById('signup_email');
+  const passwordSignUp = document.getElementById('signup_password');
+  const buttonSignUp = document.getElementById('signup_button');
+  const emailSignIn = document.getElementById('signin_email');
+  const passwordSignIn = document.getElementById('signin_password');
+  const buttonSignIn = document.getElementById('login_button');
+  const emailPasswordReset = document.getElementById('reset_password_email');
+  const buttonPasswordReset = document.getElementById('reset_password_button');
 
   buttonSignUp.addEventListener('click', e => {
     const email = emailSignUp.value;
@@ -82,7 +83,7 @@
   });
 
   buttonPasswordReset.addEventListener('click', e => {
-    const email = emailSignIn.value;
+    const email = emailPasswordReset.value;
     const auth = firebase.auth();
 
     if (email.length < 1) {

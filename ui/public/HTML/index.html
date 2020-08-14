@@ -48,7 +48,7 @@
 
       <div id="header">
         <img id="logo" src="../images/logo.png">
-        <button id="signin" type="button" onclick="signin()" >Sign In</button>
+        <button id="signin_button" type="button" onclick="signin()">Sign In</button>
       </div>
 
       <div id="midsection">
@@ -61,16 +61,16 @@
 
         <div id="rightmid">
           <form id="signupform">
-            <input type="text" id="email" placeholder="Email"><br>
+            <input type="text" id="signup_email" placeholder="Email"><br>
 
             <div id="passwordrow">
-              <input type="password" id="password" placeholder="Password" onkeyup="checkPass();"><br>
-              <input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
-              <span id="confirm-message2" class="confirm-message"></span>
+              <input type="password" id="signup_password" placeholder="Password" onkeyup="checkPass();"><br>
+              <input type="password" id="signup_confirm_password" placeholder="Confirm Password" onkeyup="checkPass();"><br>
+              <span id="signup_confirm_message" class="confirm-message"></span>
             </div> <br>
 
             <div id="signupdiv">
-              <button id="signup" type="button">Sign Up</button>
+              <button id="signup_button" type="button">Sign Up</button>
             </div>
 
             <div id="or">
@@ -105,12 +105,12 @@
           </div>
 
           <div class="container">
-            <input type="text" id="modal_email" placeholder="Email" name="eml" required>
-            <input type="password" id="modal_password" placeholder="Password" name="psw" required>
-            <button id="login" type="button" style="font-size: 18px">
+            <input type="text" id="signin_email" placeholder="Email" name="eml" required>
+            <input type="password" id="signin_password" placeholder="Password" name="psw" required>
+            <button id="login_button" type="button" style="font-size: 18px">
               Login
             </button>
-            <span class="psw">Forgot <a href="#" id="forgot_password" onclick="forgot_password()">password</a> ?</span>
+            <span class="psw">Forgot <a href="#" id="forgot_password_button" onclick="forgot_password()">password</a> ?</span>
           </div>
 
           <div id="orsignin">
@@ -143,8 +143,8 @@
           </div>
 
           <div class="container">
-            <input type="text" id="modal_email" placeholder="Email" name="eml" required>
-            <button id="login" type="button" style="font-size: 18px">Reset Password</button>
+            <input type="text" id="reset_password_email" placeholder="Email" name="eml" required>
+            <button id="reset_password_button" type="button" style="font-size: 18px">Reset Password</button>
           </div>
         </form>
       </div>
