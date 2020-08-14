@@ -19,7 +19,7 @@ body {
 	margin-left: 15px;
 }
 
-#signin{
+#signin_button{
 	width: 163px;
 	height: 50px;
 	color: black;
@@ -98,7 +98,7 @@ input{
 	border-color: #4E5166;
 }
 
-#email{
+#signup_email{
 	width:400px;
 	align-self: center;
 }
@@ -115,14 +115,14 @@ input{
 	align-self: center;
 }
 
-#password{
+#signup_password{
 	display: flex;
 	width:400px;
 	width: 50%;
 	align-self: center;
 }
 
-#confirmpassword{
+#signup_confirm_password{
 	display: flex;
 	width: 50%;
 	align-self: center;
@@ -165,7 +165,7 @@ input{
 	justify-content: flex-end;
 }
 
-#signup{
+#signup_button{
 	width: 130.6px;
 	height: 40px;
 	color: black;
@@ -222,7 +222,7 @@ input{
    background:#fff;
    width: 48px;
    height: 100%;
-   border-radius: 1px; 
+   border-radius: 1px;
    display: inline-block;
 }
 .g-sign-in-button .text-container {
@@ -333,12 +333,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
+  from {-webkit-transform: scale(0)}
   to {-webkit-transform: scale(1)}
 }
-  
+
 @keyframes animatezoom {
-  from {transform: scale(0)} 
+  from {transform: scale(0)}
   to {transform: scale(1)}
 }
 

@@ -1,22 +1,19 @@
 function checkPass()
 {
-    //Store the password field objects into variables ...
-    var password = document.getElementById('password');
-    var confirm  = document.getElementById('confirmpassword');
-    //Store the Confirmation Message Object ...
-    var message = document.getElementById('confirm-message2');
-    //Set the colors we will be using ...
+    var password = document.getElementById('signup_password');
+    var confirm  = document.getElementById('signup_confirm_password');
+    var message = document.getElementById('signup_confirm_message');
+
     var good_color = "#66cc66";
     var bad_color  = "#ff6666";
-    //Compare the values in the password field 
-    //and the confirmation field
-    if((password.value != confirm.value & confirm.value == 0) | (password.value == confirm.value & confirm.value == 0)){
-        confirm.style.backgroundColor = 'white';
+
+    if ((password.value != confirm.value & confirm.value == 0) | (password.value == confirm.value & confirm.value == 0)) {
+      confirm.style.backgroundColor = 'white';
     }
     else if(password.value == confirm.value){
-        confirm.style.backgroundColor = good_color;
+      confirm.style.backgroundColor = good_color;
     }
     else{
-        confirm.style.backgroundColor = bad_color;
+      confirm.style.backgroundColor = bad_color;
     }
-}  
+}
