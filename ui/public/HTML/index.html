@@ -16,6 +16,7 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../Javascript/confirm_password.js" defer></script>
+    <script src="../Javascript/signin_functions.js" defer></script>
 
     <script>
       function onSignIn(googleUser) {
@@ -45,35 +46,35 @@
 
     <body>
 
-      <div id="header">
-	       <img id="logo" src="../images/logo.png">
-         <button id="signin" type="button" onclick="document.getElementById('id01').style.display='block'" >Sign In</button>
+      < <div id="header">
+         <img id="logo" src="../images/logo.png">
+         <button id="signin" type="button" onclick="signin()" >Sign In</button>
       </div>
 
       <div id="midsection">
-	       <div id="leftmid">
-		         <div id="welcome">Welcome to <br>
-		             WebMark</div>
-		         <img src="../images/frontpage_photo.png">
-	       </div>
+         <div id="leftmid">
+             <div id="welcome">Welcome to <br>
+                 WebMark</div>
+             <img src="../images/frontpage_photo.png">
+         </div>
 
-	       <div id="rightmid">
-		         <form id="signupform">
-			            <input type="text" id="email" placeholder="Email"><br>
+         <div id="rightmid">
+             <form id="signupform">
+                  <input type="text" id="email" placeholder="Email"><br>
 
-			            <div id="passwordrow">
-				                <input type="password" id="password" placeholder="Password" onkeyup="checkPass();"><br>
-				                <input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
-				                <span id="confirm-message2" class="confirm-message"></span>
-			            </div> <br>
+                  <div id="passwordrow">
+                        <input type="password" id="password" placeholder="Password" onkeyup="checkPass();"><br>
+                        <input type="password" id="confirmpassword" placeholder="Confirm Password" onkeyup="checkPass();"><br>
+                        <span id="confirm-message2" class="confirm-message"></span>
+                  </div> <br>
                   <div id="signupdiv">
-			             <button id="signup" type="button">Sign Up</button>
+                   <button id="signup" type="button">Sign Up</button>
                   </div>
-			            <div id="or">
-				                <span>or</span>
-			            </div>
+                  <div id="or">
+                        <span>or</span>
+                  </div>
           <div id="googlesignupdiv">
-			      <div class='g-sign-in-button'>
+            <div class='g-sign-in-button'>
               <div class=content-wrapper>
               <div class='logo-wrapper'>
                 <img src='https://developers.google.com/identity/images/g-logo.png'>
@@ -85,8 +86,8 @@
             </div>
             </div>
                   <br>
-			       </form>
-	       </div>
+             </form>
+         </div>
       </div>
 
       <div id="id01" class="modal">
@@ -103,7 +104,7 @@
 
             <button id="login" type="button" style="font-size: 18px">Login</button>
 
-              <span class="psw">Forgot <a href="#" id="forgot_password">password</a> ?</span>
+              <span class="psw">Forgot <a href="#" id="forgot_password" onclick="forgot_password()">password</a> ?</span>
 
           </div>
 
@@ -124,6 +125,25 @@
               </div>
             </div>
             </div>
+        </form>
+      </div>
+
+
+      <div id="fp" class="modal">
+
+        <form class="modal-content animate" method="post">
+          <div class="imgcontainer">
+            <span onclick="go_back_to_signin()" class="close" title="Close Modal">&times;</span>
+          </div>
+
+          <div class="container">
+            <input type="text" id="modal_email" placeholder="Email" name="eml" required>
+
+            <button id="login" type="button" style="font-size: 18px">Reset Password</button>
+
+
+          </div>
+
         </form>
       </div>
 
