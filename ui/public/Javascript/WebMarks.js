@@ -44,13 +44,12 @@ function addWebMarkBackend() {
       xhr.setRequestHeader("Authorization", "token " + token);
     },
     success: function(res){
-      console.log(res);
-      addWebMarkFrontend();
+      addWebMarkFrontend(res.item_id, res.screenshot);
     }
   })
 };
 
-function addWebMarkFrontend() {
+function addWebMarkFrontend(webmark_id, url_screenshot) {
   mark_id = mark_id + 1;
 
   if (counter % 5 == 0) {
