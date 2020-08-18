@@ -28,11 +28,15 @@ def create_item():
     if validate_url(url) == False:
         return {'error': 'invalid url'}, 400
 
-    screenshot = get_base_64(url)
-    if screenshot == False:
-        screenshot = "screenshot unavailable"
+    url, url_updated = update_url(url)
 
-    url = update_url(url)
+    if url_updated == True:
+        screenshot = "check iframe"
+    else:
+        screenshot = get_base_64(url)
+        if screenshot == False:
+            screenshot = "screenshot unavailable"
+
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%s")
     order = 0
     owner_uid = g.uid
@@ -203,20 +207,25 @@ def get_base_64(url):
 
 def update_url(url):
 
-	if "youtube.com" in url:
-		id = url.split("?v=")[1]
-		id = id.replace("/", "")
-		url = "https://www.youtube.com/embed/" + id
-	elif "vimeo.com" in url:
-		id = url.split("vimeo.com/")[1]
-		id = id.replace("/", "")
-		url = "https://player.vimeo.com/video/" + id
-	elif "instagram.com" in url:
-		if url[len(url)-1] != "/":
-			url = url + "/"
-		url = url + "embed"
+    url_updated = False
 
-	return url
+    if "youtube.com" in url:
+        id = url.split("?v=")[1]
+        id = id.replace("/", "")
+        url = "https://www.youtube.com/embed/" + id
+        url_updated = True
+    elif "vimeo.com" in url:
+        id = url.split("vimeo.com/")[1]
+        id = id.replace("/", "")
+        url = "https://player.vimeo.com/video/" + id
+        url_updated = True
+    elif "instagram.com" in url:
+        if url[len(url)-1] != "/":
+            url = url + "/"
+        url = url + "embed"
+        url_updated = True
+
+    return url, url_updated
 
 
 def get_firebase_items(items):
