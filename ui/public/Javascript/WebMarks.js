@@ -35,13 +35,13 @@ function addWebMarkBackend() {
   var appdir = "/items/create";
 
   $.ajax({
-    type:"POST",
+    type: "POST",
     url: server + appdir,
     data: url_data,
     dataType: "json",
     contentType: "application/x-www-form-urlencoded",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Authorization", "token " + token);
+    headers: {
+      "Authorization": "token " + token
     },
     success: function(res){
       addWebMarkFrontend(res.item_id, res.screenshot);
@@ -79,9 +79,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     one_mark.appendChild(one_close);
 
     one_close.addEventListener("click", function() {
-      var x = one_close.parentElement.getAttribute("number");
-      // one_close.parentElement.remove();
-      deleteWebMark(x);
+      deleteWebMarkBackend(webmark_id);
     });
 
     one_mark.scrollIntoView({behavior: "smooth"});
@@ -108,9 +106,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     two_mark.appendChild(two_close);
 
     two_close.addEventListener("click", function() {
-      var x = two_close.parentElement.getAttribute("number");
-      // two_close.parentElement.remove();
-      deleteWebMark(x);
+      deleteWebMarkBackend(webmark_id);
     });
 
     two_mark.scrollIntoView({behavior: "smooth"});
@@ -133,9 +129,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     three_mark.appendChild(three_close);
 
     three_close.addEventListener("click", function() {
-      var x = three_close.parentElement.getAttribute("number");
-      // three_close.parentElement.remove();
-      deleteWebMark(x);
+      deleteWebMarkBackend(webmark_id);
     });
 
     three_mark.scrollIntoView({behavior: "smooth"});
@@ -163,9 +157,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     four_mark.appendChild(four_close);
 
     four_close.addEventListener("click", function() {
-      var x = four_close.parentElement.getAttribute("number");
-      // four_close.parentElement.remove();
-      deleteWebMark(x);
+      deleteWebMarkBackend(webmark_id);
     });
 
     four_mark.scrollIntoView({behavior: "smooth"});
@@ -188,9 +180,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     five_mark.appendChild(five_close);
 
     five_close.addEventListener("click", function() {
-      var x = five_close.parentElement.getAttribute("number");
-      // five_close.parentElement.remove();
-      deleteWebMark(x);
+      deleteWebMarkBackend(webmark_id);
     });
 
     five_mark.scrollIntoView({behavior: "smooth"});
@@ -199,7 +189,32 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
   counter = counter + 1;
 };
 
-function deleteWebMark(x) {
+function deleteWebMarkBackend(webmark_id) {
+  const auth = firebase.auth();
+
+  if (token == null || token == "") {
+    alert('Please log in and try again.');
+    return;
+  }
+
+  var server = "http://127.0.0.1:5000";
+  var appdir = "/items/delete/" + webmark_id;
+
+  $.ajax({
+    type: "DELETE",
+    url: server + appdir,
+    data: {},
+    headers: {
+      "Authorization": "token " + token,
+      'Content-Type': 'application/json'
+    },
+    success: function(res){
+      deleteWebMarkFrontend();
+    }
+  })
+};
+
+function deleteWebMarkFrontend() {
   mark_id = parseInt(mark_id);
   last_element_id = mark_id - 1;
 

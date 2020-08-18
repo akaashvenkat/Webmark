@@ -1,5 +1,6 @@
 from flask import Flask, g
 from flask_httpauth import HTTPTokenAuth
+from flask_cors import CORS, cross_origin
 
 import firebase_admin
 from firebase_admin import credentials
@@ -21,7 +22,7 @@ app.register_blueprint(users_api, url_prefix='/users')
 def do_something_whenever_a_request_has_been_handled(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', '*')
-    response.headers.add('Access-Control-Allow-Methods', "POST, PUT, GET, OPTIONS")
+    response.headers.add('Access-Control-Allow-Methods', "GET, POST, OPTIONS, PUT, DELETE")
     return response
 
 
