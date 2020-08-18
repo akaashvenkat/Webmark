@@ -87,6 +87,22 @@ input:focus::placeholder{
 
 }
 
+.WebMark_imgdivs{
+	max-width: 100%;
+	justify-content: center;
+	object-fit: cover;
+	object-position: 100% 0;
+}
+
+.WebMark_img{
+	display:block;
+	max-width: 100%;
+	/*max-height: 100%;*/
+	object-fit: cover;
+	object-position: 100% 0;
+   /* margin:auto;*/
+}
+
 #firstrow{
 	display: flex;
 	margin-bottom: 50px;

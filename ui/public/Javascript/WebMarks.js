@@ -70,8 +70,10 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     one_mark.setAttribute("number", mark_id);
     first_row.appendChild(one_mark);
 
-    one_div = document.createElement('div');
-    one_mark.appendChild(one_div);
+    one_img = document.createElement('IMG');
+    one_img.setAttribute("class", "WebMark_img");
+    one_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    one_mark.appendChild(one_img);
 
     one_close = document.createElement('span');
     one_close.innerHTML = "&times";
@@ -97,8 +99,10 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     two_mark.setAttribute("number", mark_id);
     twothree_mark.appendChild(two_mark);
 
-    two_div = document.createElement('div');
-    two_mark.appendChild(two_div);
+    two_img = document.createElement('IMG');
+    two_img.setAttribute("class", "WebMark_img");
+    two_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    two_mark.appendChild(two_img);
 
     two_close = document.createElement('span');
     two_close.innerHTML = "&times";
@@ -120,8 +124,10 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     three_mark.setAttribute("number", mark_id);
     twothree_mark.appendChild(three_mark);
 
-    three_div = document.createElement('div');
-    three_mark.appendChild(three_div);
+    three_img = document.createElement('IMG');
+    three_img.setAttribute("class", "WebMark_img");
+    three_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    three_mark.appendChild(three_img);
 
     three_close = document.createElement('span');
     three_close.innerHTML = "&times";
@@ -148,8 +154,10 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     WebMarks_div.appendChild(four_mark);
     second_row.appendChild(four_mark);
 
-    four_div = document.createElement('div');
-    four_mark.appendChild(four_div);
+    four_img = document.createElement('IMG');
+    four_img.setAttribute("class", "WebMark_img");
+    four_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    four_mark.appendChild(four_img);
 
     four_close = document.createElement('span');
     four_close.innerHTML = "&times";
@@ -171,8 +179,10 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
     five_mark.setAttribute("number", mark_id);
     second_row.appendChild(five_mark);
 
-    five_div = document.createElement('div');
-    five_mark.appendChild(five_div);
+    five_img = document.createElement('IMG');
+    five_img.setAttribute("class", "WebMark_img");
+    five_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    five_mark.appendChild(five_img);
 
     five_close = document.createElement('span');
     five_close.innerHTML = "&times";
