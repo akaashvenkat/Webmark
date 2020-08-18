@@ -47,7 +47,7 @@
     });
   });
 
-  async function updateToken (tok) {
+  async function updateToken(tok) {
     sessionStorage.setItem('token', tok)
   }
 
@@ -74,8 +74,8 @@
             updateToken(idToken)
               .then(function(result) {
                 window.location.assign("./WebMark.html")
-              });
-	         })
+            });
+	        })
           .catch(function (error) {
             self.text = "ERROR:" + error.message;
         });
