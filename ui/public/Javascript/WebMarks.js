@@ -2,6 +2,8 @@ mark_id = 0;
 counter = 0;
 bigdivs = 0;
 
+items = [];
+
 var config = firebaseConfig;
 firebase.initializeApp(config);
 
@@ -14,6 +16,10 @@ enter_link.addEventListener('keyup', function (e) {
     addWebMarkBackend();
   }
 });
+
+async function addItem(item_id, url, screenshot) {
+  items.push([item_id, url, screenshot]);
+}
 
 function addWebMarkBackend() {
   const auth = firebase.auth();
@@ -44,12 +50,15 @@ function addWebMarkBackend() {
       "Authorization": "token " + token
     },
     success: function(res){
-      addWebMarkFrontend(res.item_id, res.screenshot);
+      addItem(res.item_id, res.url, res.screenshot)
+        .then(function(result) {
+          addWebMarkFrontend();
+      });
     }
   })
 };
 
-function addWebMarkFrontend(webmark_id, url_screenshot) {
+function addWebMarkFrontend() {
   mark_id = mark_id + 1;
 
   if (counter % 5 == 0) {
@@ -72,7 +81,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
 
     one_img = document.createElement('IMG');
     one_img.setAttribute("class", "WebMark_img");
-    one_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    //one_img.src = "data:image/gif;base64,"+url_screenshot+"";
     one_mark.appendChild(one_img);
 
     one_close = document.createElement('span');
@@ -101,7 +110,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
 
     two_img = document.createElement('IMG');
     two_img.setAttribute("class", "WebMark_img");
-    two_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    //two_img.src = "data:image/gif;base64,"+url_screenshot+"";
     two_mark.appendChild(two_img);
 
     two_close = document.createElement('span');
@@ -126,7 +135,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
 
     three_img = document.createElement('IMG');
     three_img.setAttribute("class", "WebMark_img");
-    three_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    //three_img.src = "data:image/gif;base64,"+url_screenshot+"";
     three_mark.appendChild(three_img);
 
     three_close = document.createElement('span');
@@ -156,7 +165,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
 
     four_img = document.createElement('IMG');
     four_img.setAttribute("class", "WebMark_img");
-    four_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    //four_img.src = "data:image/gif;base64,"+url_screenshot+"";
     four_mark.appendChild(four_img);
 
     four_close = document.createElement('span');
@@ -181,7 +190,7 @@ function addWebMarkFrontend(webmark_id, url_screenshot) {
 
     five_img = document.createElement('IMG');
     five_img.setAttribute("class", "WebMark_img");
-    five_img.src = "data:image/gif;base64,"+url_screenshot+"";
+    //five_img.src = "data:image/gif;base64,"+url_screenshot+"";
     five_mark.appendChild(five_img);
 
     five_close = document.createElement('span');
