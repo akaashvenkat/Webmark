@@ -184,7 +184,6 @@ input:focus::placeholder{
 
 .close {
 	display: none;
-	
 }
 
 .close:hover{
@@ -195,8 +194,8 @@ input:focus::placeholder{
 	display: block;
 	position: relative;
     top: 0;
-    left: 95%;
-    color: #000;
+    right: 4%;
+    color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
 }
@@ -205,8 +204,8 @@ input:focus::placeholder{
 	display: block;
 	position: relative;
     top: 0;
-    left: 92%;
-    color: #000;
+    right: 6%;
+    color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
 }
@@ -215,8 +214,8 @@ input:focus::placeholder{
 	display: block;
 	position: relative;
     top: 0;
-    left: 92%;
-    color: #000;
+    right: 6%;
+    color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
 }
@@ -225,8 +224,8 @@ input:focus::placeholder{
 	display: block;
 	position: relative;
     top: 0;
-    left: 95%;
-    color: #000;
+    right: 6%;
+    color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
 }
@@ -235,8 +234,8 @@ input:focus::placeholder{
 	display: block;
 	position: relative;
     top: 0;
-    left: 95%;
-    color: #000;
+    right: 6%;
+    color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
 }
