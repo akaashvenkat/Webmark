@@ -211,6 +211,7 @@ def update_url(url):
 
     if "youtube.com" in url:
         id = url.split("?v=")[1]
+        id = id.split("&")[0]
         id = id.replace("/", "")
         url = "https://www.youtube.com/embed/" + id
         url_updated = True

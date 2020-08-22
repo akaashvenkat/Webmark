@@ -31,7 +31,8 @@ body {
 
 #enter_link{
 	margin: 0 auto;
-	width: 75%;
+	/*with filter: width 75%*/
+	width: 100%;
 	background-color: #ECECE2;
 	border-style: none none solid none;
 	font-size: 33px;
@@ -91,7 +92,7 @@ input:focus::placeholder{
 	max-width: 100%;
 	justify-content: center;
 	object-fit: cover;
-	object-position: 100% 0;
+	object-position: 0 100%;
 }
 
 .WebMark_img{
@@ -99,7 +100,7 @@ input:focus::placeholder{
 	max-width: 100%;
 	/*max-height: 100%;*/
 	object-fit: cover;
-	object-position: 100% 0;
+	object-position: 0 100%;
    /* margin:auto;*/
 }
 
