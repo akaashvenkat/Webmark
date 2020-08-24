@@ -6,6 +6,10 @@ body {
   background-color: #ECECE2;
 }
 
+iframe {
+  border-width: 0px;
+}
+
 #header{
 	display: flex;
 	flex-direction: row;
@@ -88,19 +92,12 @@ input:focus::placeholder{
 
 }
 
-.WebMark_imgdivs{
-	max-width: 100%;
-	justify-content: center;
-	object-fit: cover;
-	object-position: 0 100%;
-}
-
 .WebMark_img{
 	display:block;
 	max-width: 100%;
 	/*max-height: 100%;*/
 	object-fit: cover;
-	object-position: 0 100%;
+	object-position: 0 0;
    /* margin:auto;*/
 }
 
@@ -112,7 +109,6 @@ input:focus::placeholder{
 
 #one{
 	display: flex;
-	border: 2px solid gray;
 	width: 65%;
 	margin-right: 50px;
 	height: 400px;
@@ -126,13 +122,13 @@ input:focus::placeholder{
 	display: flex;
 	flex-direction: column;
 	width: 35%;
+  height: 400px;
 }
 
 #two{
 	display: flex;
 	margin-bottom:50px;
-	height: 45%;
-	border: 2px solid gray;
+	height: 175px;
 }
 
 #two iframe{
@@ -141,8 +137,7 @@ input:focus::placeholder{
 
 #three{
 	display: flex;
-	height: 45%;
-	border: 2px solid gray;
+	height: 175px;
 }
 
 #three iframe{
@@ -161,21 +156,17 @@ input:focus::placeholder{
 	width: 50%;
 	margin-right: 50px;
 	height: 300px;
-	border: 2px solid gray;
-
 }
 
 #four iframe{
 	width: 100%;
 }
 
-
 #five {
 	display: flex;
 	margin-bottom:50px;
 	width: 50%;
 	height: 300px;
-	border: 2px solid gray;
 }
 
 #five iframe{
@@ -240,8 +231,3 @@ input:focus::placeholder{
     font-size: 35px;
     font-weight: bold;
 }
-
-
-
-
-

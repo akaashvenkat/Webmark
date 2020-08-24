@@ -43,16 +43,18 @@ def create_item():
 
     response, response_code = get_items()
     if len(response) != 0:
-        for item_id in response:
-            item_info = response[item_id]
-            item = Item.from_dict(item_info)
+        for item in response:
+            item_info = response[item]
+            item_id = item_info['item_id']
             cur_order = item_info['order']
             new_order = cur_order + 1
-            item.update(order=new_order)
+
+            cur_item = Item.from_dict(item_info)
+            cur_item.update(order=new_order)
 
             db = firestore.client()
             try:
-                db.collection('items').document(item_id).update(item.to_dict())
+                db.collection('items').document(item_id).update(cur_item.to_dict())
             except:
                 return {'error': 'something went wrong'}, 500
 
@@ -130,20 +132,21 @@ def delete_item(item_id):
 
     response, response_code = get_items()
     if len(response) != 0:
-        for item_id in response:
-            item_info = response[item_id]
-            item = Item.from_dict(item_info)
-            cur_order = item_info['order']
+        for item in response:
+            item_info = response[item]
+            item_id = item_info['item_id']
 
+            cur_order = item_info['order']
             if cur_order < del_item.order:
                 continue
-
             new_order = cur_order - 1
-            item.update(order=new_order)
+
+            cur_item = Item.from_dict(item_info)
+            cur_item.update(order=new_order)
 
             db = firestore.client()
             try:
-                db.collection('items').document(item_id).update(item.to_dict())
+                db.collection('items').document(item_id).update(cur_item.to_dict())
             except:
                 return {'error': 'something went wrong'}, 500
 
