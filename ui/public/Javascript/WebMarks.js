@@ -15,7 +15,7 @@ async function addExistingItems(existing_items) {
   for (const [key, value] of Object.entries(existing_items)) {
     items.push([value.item_id, value.url, value.screenshot]);
   }
-}
+};
 
 window.addEventListener('load', (event) => {
   const auth = firebase.auth();
@@ -52,13 +52,12 @@ function addExistingWebMarks() {
 enter_link.addEventListener('keyup', function (e) {
   if (e.keyCode == 13) {
     addWebMarkBackend();
-    enter_link.value = "";
   }
 });
 
 async function addNewItem(item_id, url, screenshot) {
-  items.push([item_id, url, screenshot]);
-}
+  items.unshift([item_id, url, screenshot]);
+};
 
 function addWebMarkBackend() {
   const auth = firebase.auth();
@@ -305,7 +304,7 @@ function addWebMarkFrontend() {
         five_mark.appendChild(five_iframe);
       }
 
-      else{
+      else {
         five_img = document.createElement('IMG');
         five_img.setAttribute("class", "WebMark_img");
         five_img.src = "data:image/gif;base64,"+items[counter][2]+"";
@@ -324,17 +323,19 @@ function addWebMarkFrontend() {
       five_mark.scrollIntoView({behavior: "smooth"});
     }
 
-      counter = counter + 1;
+    enter_link.value = "";
 
-      if(counter > 1){
-        resrc()
-      }
+    counter = counter + 1;
+
+    if (counter > 1) {
+      resrc()
+    }
 
 };
 
-function resrc(){
+function resrc() {
   div_iter = 0;
-  for(i = items.length - 1;i >= 0; i--){
+  for (i = 0; i < items.length; i++) {
     if(items[i][2] == "check iframe"){
       div = document.getElementsByClassName("mark")[div_iter];
       iframe = document.createElement('iframe');
