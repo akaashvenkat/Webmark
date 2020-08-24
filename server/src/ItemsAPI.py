@@ -235,6 +235,7 @@ def get_firebase_items(items):
     for item in items:
         item_info = item.to_dict()
         item_info['item_id'] = item.id
-        result[item.id] = item_info
+        result[item_info['order']] = item_info
+    result = dict(sorted(result.items()))
 
     return result

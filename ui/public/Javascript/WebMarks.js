@@ -11,6 +11,44 @@ var token = sessionStorage.getItem('token');
 var number = document.createAttribute("number");
 var enter_link = document.getElementById('enter_link');
 
+async function addExistingItems(existing_items) {
+  for (const [key, value] of Object.entries(existing_items)) {
+    items.push([value.item_id, value.url, value.screenshot]);
+  }
+}
+
+window.addEventListener('load', (event) => {
+  const auth = firebase.auth();
+
+  if (token == null || token == "") {
+    alert('Please log in and try again.');
+    return;
+  }
+
+  var server = "http://127.0.0.1:5000";
+  var appdir = "/items/user";
+
+  $.ajax({
+    type: "GET",
+    url: server + appdir,
+    data: {},
+    contentType: "application/x-www-form-urlencoded",
+    headers: {
+      "Authorization": "token " + token
+    },
+    success: function(res){
+      addExistingItems(res)
+        .then(function(result) {
+          addExistingWebMarks();
+      });
+    }
+  })
+});
+
+function addExistingWebMarks() {
+
+};
+
 enter_link.addEventListener('keyup', function (e) {
   if (e.keyCode == 13) {
     addWebMarkBackend();
@@ -18,7 +56,7 @@ enter_link.addEventListener('keyup', function (e) {
   }
 });
 
-async function addItem(item_id, url, screenshot) {
+async function addNewItem(item_id, url, screenshot) {
   items.push([item_id, url, screenshot]);
 }
 
@@ -51,7 +89,7 @@ function addWebMarkBackend() {
       "Authorization": "token " + token
     },
     success: function(res){
-      addItem(res.item_id, res.url, res.screenshot)
+      addNewItem(res.item_id, res.url, res.screenshot)
         .then(function(result) {
           addWebMarkFrontend();
       });
@@ -107,7 +145,7 @@ function addWebMarkFrontend() {
       one_mark.appendChild(one_close);
 
       one_close.addEventListener("click", function() {
-        deleteWebMarkFrontend(); 
+        deleteWebMarkFrontend();
       });
 
       one_mark.scrollIntoView({behavior: "smooth"});
