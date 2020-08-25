@@ -1,6 +1,8 @@
 mark_id = 0;
 counter = 0;
 bigdivs = 0;
+twothree_divs = 0;
+fourfive_divs = 0;
 
 items = [];
 
@@ -98,6 +100,7 @@ function addWebMarkBackend() {
 
 function addWebMarkFrontend() {
   mark_id = mark_id + 1;
+  console.log(counter);
 
     if (counter % 5 == 0) {
 
@@ -143,8 +146,11 @@ function addWebMarkFrontend() {
       one_close.setAttribute("class","close");
       one_mark.appendChild(one_close);
 
+
       one_close.addEventListener("click", function() {
-        deleteWebMarkFrontend();
+        its_number = one_close.parentElement.getAttribute("number");
+        its_number = parseInt(its_number)-1;
+        deleteWebMarkFrontend(items[its_number][0])
       });
 
       one_mark.scrollIntoView({behavior: "smooth"});
@@ -154,6 +160,8 @@ function addWebMarkFrontend() {
 
       twothree_mark = document.createElement('div');
       twothree_mark.setAttribute("id", "twothree");
+      twothree_mark.setAttribute("class", "twothreedivs");
+      twothree_divs= twothree_divs+1;
       first_row.appendChild(twothree_mark);
 
       two_mark = document.createElement('div');
@@ -189,7 +197,9 @@ function addWebMarkFrontend() {
       two_mark.appendChild(two_close);
 
       two_close.addEventListener("click", function() {
-        deleteWebMarkFrontend();
+        its_number = two_close.parentElement.getAttribute("number");
+        its_number = parseInt(its_number)-1;
+        deleteWebMarkFrontend(items[its_number][0]);
       });
 
       two_mark.scrollIntoView({behavior: "smooth"});
@@ -230,7 +240,9 @@ function addWebMarkFrontend() {
       three_mark.appendChild(three_close);
 
       three_close.addEventListener("click", function() {
-        deleteWebMarkFrontend();
+        its_number = three_close.parentElement.getAttribute("number");
+        its_number = parseInt(its_number)-1;
+        deleteWebMarkFrontend(items[its_number][0])
       });
 
       three_mark.scrollIntoView({behavior: "smooth"});
@@ -240,6 +252,8 @@ function addWebMarkFrontend() {
 
       second_row = document.createElement('div');
       second_row.setAttribute("id", "secondrow");
+      second_row.setAttribute("class", "fourfivedivs");
+      fourfive_divs = fourfive_divs + 1;
       WebMarks_div.appendChild(second_row);
 
       four_mark = document.createElement('div');
@@ -276,7 +290,9 @@ function addWebMarkFrontend() {
       four_mark.appendChild(four_close);
 
       four_close.addEventListener("click", function() {
-        deleteWebMarkFrontend();
+        its_number = four_close.parentElement.getAttribute("number");
+        its_number = parseInt(its_number)-1;
+        deleteWebMarkFrontend(items[its_number][0]);
       });
 
       four_mark.scrollIntoView({behavior: "smooth"});
@@ -317,7 +333,9 @@ function addWebMarkFrontend() {
       five_mark.appendChild(five_close);
 
       five_close.addEventListener("click", function() {
-        deleteWebMarkFrontend();
+        its_number = five_close.parentElement.getAttribute("number");
+        its_number = parseInt(its_number)-1;
+        deleteWebMarkFrontend(items[its_number][0])
       });
 
       five_mark.scrollIntoView({behavior: "smooth"});
@@ -325,7 +343,9 @@ function addWebMarkFrontend() {
 
     enter_link.value = "";
 
+     console.log(counter);
     counter = counter + 1;
+     console.log(counter);
 
     if (counter > 1) {
       resrc()
@@ -374,13 +394,13 @@ function deleteWebMarkBackend(webmark_id) {
       'Content-Type': 'application/json'
     },
     success: function(res){
-      //deleteWebMarkFrontend();
+      //deleteWebMarkFrontend(items[counter][0])
     }
   })
 };
 
-function deleteWebMarkFrontend() {
-  mark_id = parseInt(mark_id);
+function deleteWebMarkFrontend(item_id) {
+  console.log(item_id);
   last_element_id = mark_id - 1;
 
   array = document.getElementsByClassName("mark");
@@ -394,5 +414,58 @@ function deleteWebMarkFrontend() {
     WebMarks_divs = document.getElementsByClassName("bigdivs");
     WebMarks_divs[last_bigdiv].remove();
     bigdivs = bigdivs - 1;
+  }
+
+  else if (counter % 5 == 1) {
+    last_twothreediv = twothree_divs - 1;
+    get_twothree_divs = document.getElementsByClassName("twothreedivs");
+    get_twothree_divs[last_twothreediv].remove();
+    twothree_divs = twothree_divs - 1;
+  }
+
+   else if (counter % 5 == 3) {
+    last_fourfivediv = fourfive_divs - 1;
+    get_fourfive_divs = document.getElementsByClassName("fourfivedivs");
+    get_fourfive_divs[last_fourfivediv].remove();
+    fourfive_divs = fourfive_divs - 1;
+  }
+
+  for (i = 0; i < mark_id; ++i) {
+    if(items[i][2] == "check iframe" && items[i][0] == item_id){
+      console.log("iframe shit")
+      div = document.getElementsByClassName("mark")[i];
+      iframe = document.createElement('iframe');
+      iframe.setAttribute("class", "WebMark_img");
+      div.replaceChild(iframe, div.childNodes[0]);
+      i = i +1;
+      iframe.src = items[i][1];
+    }
+     else if(items[i][2] == "check iframe" && items[i][0] != item_id){
+      console.log("iframe shit")
+      div = document.getElementsByClassName("mark")[i];
+      iframe = document.createElement('iframe');
+      iframe.setAttribute("class", "WebMark_img");
+      div.replaceChild(iframe, div.childNodes[0]);
+      i = i +1;
+      iframe.src = items[i][1];
+    }
+    else if(items[i][0] == item_id){
+      console.log("pic shit")
+      div = document.getElementsByClassName("mark")[i];
+      img = document.createElement('IMG');
+      img.setAttribute("class", "WebMark_img");
+      div.replaceChild(img, div.childNodes[0]);
+      i = i +1;
+      img.src = "data:image/gif;base64,"+items[i][2]+"";
+    }
+    else if(items[i][0] != item_id){
+      console.log("pic shit")
+      div = document.getElementsByClassName("mark")[i];
+      img = document.createElement('IMG');
+      img.setAttribute("class", "WebMark_img");
+      div.replaceChild(img, div.childNodes[0]);
+      i = i +1;
+      img.src = "data:image/gif;base64,"+items[i][2]+"";
+    }
   }
 };
