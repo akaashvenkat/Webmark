@@ -49,7 +49,236 @@ window.addEventListener('load', (event) => {
 
 function addExistingWebMarks() {
 
+  for (i = 0; i < items.length; i++) {
+
+      if (counter % 5 == 0) {
+
+        WebMarks_div = document.createElement('div');
+        WebMarks_div.setAttribute("id", "WebMarks");
+        WebMarks_div.setAttribute("class", "bigdivs");
+        bigdivs = bigdivs + 1;
+        document.body.appendChild(WebMarks_div);
+
+        first_row = document.createElement('div');
+        first_row.setAttribute("id", "firstrow");
+        WebMarks_div.appendChild(first_row);
+
+        one_mark = document.createElement('div');
+        one_mark.setAttribute("id", "one");
+        one_mark.setAttribute("class", "mark");
+        one_mark.setAttribute("number", mark_id);
+        first_row.appendChild(one_mark);
+
+        if(items[counter][2] == "screenshot unavailable"){
+          one_img = document.createElement('IMG');
+          one_img.setAttribute("class", "WebMark_img");
+          one_img.src = "../images/unavailable.png"
+          one_mark.appendChild(one_img);
+        }
+
+        else if(items[counter][2] == "check iframe"){
+          one_iframe = document.createElement('iframe');
+          one_iframe.setAttribute("class", "WebMark_img");
+          one_iframe.src = items[counter][1];
+          one_mark.appendChild(one_iframe);
+        }
+
+        else{
+          one_img = document.createElement('IMG');
+          one_img.setAttribute("class", "WebMark_img");
+          one_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          one_mark.appendChild(one_img);
+        }
+
+        one_close = document.createElement('span');
+        one_close.innerHTML = "&times";
+        one_close.setAttribute("class","close");
+        one_mark.appendChild(one_close);
+
+        one_close.addEventListener("click", function() {
+          deleteWebMarkFrontend();
+        });
+
+        one_mark.scrollIntoView({behavior: "smooth"});
+      }
+
+      else if (counter % 5 == 1) {
+
+        twothree_mark = document.createElement('div');
+        twothree_mark.setAttribute("id", "twothree");
+        first_row.appendChild(twothree_mark);
+
+        two_mark = document.createElement('div');
+        two_mark.setAttribute("id", "two");
+        two_mark.setAttribute("class", "mark");
+        two_mark.setAttribute("number", mark_id);
+        twothree_mark.appendChild(two_mark);
+
+        if(items[counter][2] == "screenshot unavailable"){
+          two_img = document.createElement('IMG');
+          two_img.setAttribute("class", "WebMark_img");
+          two_img.src = "../images/unavailable.png"
+          two_mark.appendChild(tw_img);
+        }
+
+        else if(items[counter][2] == "check iframe"){
+          two_iframe = document.createElement('iframe');
+          two_iframe.setAttribute("class", "WebMark_img");
+          two_iframe.src = items[counter][1];
+          two_mark.appendChild(two_iframe);
+        }
+
+        else{
+          two_img = document.createElement('IMG');
+          two_img.setAttribute("class", "WebMark_img");
+          two_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          two_mark.appendChild(two_img);
+        }
+
+        two_close = document.createElement('span');
+        two_close.innerHTML = "&times";
+        two_close.setAttribute("class","close");
+        two_mark.appendChild(two_close);
+
+        two_close.addEventListener("click", function() {
+          deleteWebMarkFrontend();
+        });
+
+        two_mark.scrollIntoView({behavior: "smooth"});
+      }
+
+      else if (counter % 5 == 2) {
+
+        three_mark = document.createElement('div');
+        three_mark.setAttribute("id", "three");
+        three_mark.setAttribute("class", "mark");
+        three_mark.setAttribute("number", mark_id);
+        twothree_mark.appendChild(three_mark);
+
+        if(items[counter][2] == "screenshot unavailable"){
+          three_img = document.createElement('IMG');
+          three_img.setAttribute("class", "WebMark_img");
+          three_img.src = "../images/unavailable.png"
+          three_mark.appendChild(three_img);
+        }
+
+        else if(items[counter][2] == "check iframe"){
+          three_iframe = document.createElement('iframe');
+          three_iframe.setAttribute("class", "WebMark_img");
+          three_iframe.src = items[counter][1];
+          three_mark.appendChild(three_iframe);
+        }
+
+        else{
+          three_img = document.createElement('IMG');
+          three_img.setAttribute("class", "WebMark_img");
+          three_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          three_mark.appendChild(three_img);
+        }
+
+        three_close = document.createElement('span');
+        three_close.innerHTML = "&times";
+        three_close.setAttribute("class","close");
+        three_mark.appendChild(three_close);
+
+        three_close.addEventListener("click", function() {
+          deleteWebMarkFrontend();
+        });
+
+        three_mark.scrollIntoView({behavior: "smooth"});
+      }
+
+      else if (counter % 5 == 3) {
+
+        second_row = document.createElement('div');
+        second_row.setAttribute("id", "secondrow");
+        WebMarks_div.appendChild(second_row);
+
+        four_mark = document.createElement('div');
+        four_mark.setAttribute("id", "four");
+        four_mark.setAttribute("class", "mark");
+        four_mark.setAttribute("number", mark_id);
+        WebMarks_div.appendChild(four_mark);
+        second_row.appendChild(four_mark);
+
+        if(items[counter][2] == "screenshot unavailable"){
+          four_img = document.createElement('IMG');
+          four_img.setAttribute("class", "WebMark_img");
+          four_img.src = "../images/unavailable.png"
+          four_mark.appendChild(four_img);
+        }
+
+        else if(items[counter][2] == "check iframe"){
+          four_iframe = document.createElement('iframe');
+          four_iframe.setAttribute("class", "WebMark_img");
+          four_iframe.src = items[counter][1];
+          four_mark.appendChild(four_iframe);
+        }
+
+        else{
+          four_img = document.createElement('IMG');
+          four_img.setAttribute("class", "WebMark_img");
+          four_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          four_mark.appendChild(four_img);
+        }
+
+        four_close = document.createElement('span');
+        four_close.innerHTML = "&times";
+        four_close.setAttribute("class","close");
+        four_mark.appendChild(four_close);
+
+        four_close.addEventListener("click", function() {
+          deleteWebMarkFrontend();
+        });
+
+        four_mark.scrollIntoView({behavior: "smooth"});
+      }
+
+      else if (counter % 5 == 4) {
+
+        five_mark = document.createElement('div');
+        five_mark.setAttribute("id", "five");
+        five_mark.setAttribute("class", "mark");
+        five_mark.setAttribute("number", mark_id);
+        second_row.appendChild(five_mark);
+
+        if(items[counter][2] == "screenshot unavailable"){
+          five_img = document.createElement('IMG');
+          five_img.setAttribute("class", "WebMark_img");
+          five_img.src = "../images/unavailable.png"
+          five_mark.appendChild(five_img);
+        }
+
+        else if(items[counter][2] == "check iframe"){
+          five_iframe = document.createElement('iframe');
+          five_iframe.setAttribute("class", "WebMark_img");
+          five_iframe.src = items[counter][1];
+          five_mark.appendChild(five_iframe);
+        }
+
+        else {
+          five_img = document.createElement('IMG');
+          five_img.setAttribute("class", "WebMark_img");
+          five_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          five_mark.appendChild(five_img);
+        }
+
+        five_close = document.createElement('span');
+        five_close.innerHTML = "&times";
+        five_close.setAttribute("class","close");
+        five_mark.appendChild(five_close);
+
+        five_close.addEventListener("click", function() {
+          deleteWebMarkFrontend();
+        });
+
+        five_mark.scrollIntoView({behavior: "smooth"});
+      }
+
+      counter = counter + 1;
+    }
 };
+
 
 enter_link.addEventListener('keyup', function (e) {
   if (e.keyCode == 13) {
