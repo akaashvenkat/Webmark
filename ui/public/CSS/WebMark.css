@@ -60,7 +60,7 @@ iframe {
 }
 
 input:focus::placeholder{
-	opacity: 0;
+	opacity: 1;
 }
 
 #filter{
