@@ -21,12 +21,12 @@ def create_item():
     try:
         url = request.form['url']
     except:
-        return {'error': 'missing required params'}, 400
+        return {'error': 'Please enter a URL to add as a WebMark.'}, 400
 
     if "http" not in url or "https" not in url:
         url = "http://" + url
     if validate_url(url) == False:
-        return {'error': 'invalid url'}, 400
+        return {'error': 'Please enter a valid URL to add as a WebMark.'}, 400
 
     url, url_updated = update_url(url)
 
@@ -56,7 +56,7 @@ def create_item():
             try:
                 db.collection('items').document(item_id).update(cur_item.to_dict())
             except:
-                return {'error': 'something went wrong'}, 500
+                return {'error': 'There was an error adding this URL as a WebMark. Please try again.'}, 500
 
     item = Item(url=url, timestamp=timestamp, order=order, owner_uid=owner_uid, screenshot=screenshot)
     db = firestore.client()
@@ -65,7 +65,7 @@ def create_item():
         new_item_ref = db.collection('items').document()
         new_item_ref.set(item.to_dict())
     except:
-        return {'error': 'something went wrong'}, 500
+        return {'error': 'There was an error adding this URL as a WebMark. Please try again.'}, 500
 
     new_item = item.to_dict()
     new_item['item_id'] = new_item_ref.id
@@ -84,7 +84,7 @@ def get_item(item_id):
         item_info = item.to_dict()
         item_info['item_id'] = item_id
     except:
-        return {'error': 'item not found'}, 404
+        return {'error': 'The WebMark you are searching for cannot be retrieved. Please try again.'}, 404
 
     return item_info, 200
 
@@ -99,7 +99,7 @@ def update_item(item_id):
 
     item = Item.from_dict(response)
     if item.owner_uid != g.uid:
-        return {'error': 'user does not own this item'}, 401
+        return {'error': 'You do not have permissions to update this WebMark.'}, 401
     order = request.form.get('order')
     item.update(order=order)
 
@@ -107,7 +107,7 @@ def update_item(item_id):
     try:
         db.collection('items').document(item_id).update(item.to_dict())
     except:
-        return {'error': 'something went wrong'}, 500
+        return {'error': 'There was an error updating this WebMark. Please try again.'}, 500
 
     return item.to_dict(), 200
 
@@ -122,13 +122,13 @@ def delete_item(item_id):
 
     del_item = Item.from_dict(response)
     if del_item.owner_uid != g.uid:
-        return {'error': 'user does not own this item'}, 401
+        return {'error': 'You do not have permissions to delete this WebMark.'}, 401
 
     db = firestore.client()
     try:
         db.collection('items').document(item_id).delete()
     except:
-        return {'error': 'something went wrong'}, 500
+        return {'error': 'There was an error deleting this WebMark. Please try again.'}, 500
 
     response, response_code = get_items()
     if len(response) != 0:
@@ -148,7 +148,7 @@ def delete_item(item_id):
             try:
                 db.collection('items').document(item_id).update(cur_item.to_dict())
             except:
-                return {'error': 'something went wrong'}, 500
+                return {'error': 'There was an error deleting this WebMark. Please try again.'}, 500
 
     return del_item.to_dict(), 200
 

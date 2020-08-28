@@ -20,11 +20,6 @@ async function addExistingItems(existing_items) {
 window.addEventListener('load', (event) => {
   const auth = firebase.auth();
 
-  if (token == null || token == "") {
-    alert('Please log in and try again.');
-    return;
-  }
-
   var server = "http://127.0.0.1:5000";
   var appdir = "/items/user";
 
@@ -41,6 +36,14 @@ window.addEventListener('load', (event) => {
         .then(function(result) {
           displayWebMarks();
       });
+    },
+    error: function(res){
+      if (res.responseText == "Unauthorized Access") {
+        alert('Please log in to view your WebMarks.');
+      } else {
+        alert(res.responseJSON["error"]);
+      }
+      return;
     }
   })
 });
@@ -58,15 +61,10 @@ async function addNewItem(item_id, url, screenshot) {
 function addWebMark() {
   const auth = firebase.auth();
 
-  if (token == null || token == "") {
-    alert('Please log in and try again.');
-    return;
-  }
-
   const newInput = enter_link.value;
 
   if (newInput.length < 1) {
-    alert('Please enter a url to add as a WebMark.');
+    alert('Please enter a URL to add as a WebMark.');
     return;
   }
 
@@ -90,6 +88,14 @@ function addWebMark() {
           enter_link.value = "";
           enter_link.placeholder = "Upload Link Here"
       });
+    },
+    error: function(res){
+      if (res.responseText == "Unauthorized Access") {
+        alert('Please log in to add a new WebMark.');
+      } else {
+        alert(res.responseJSON["error"]);
+      }
+      return;
     }
   })
 };
@@ -111,11 +117,6 @@ async function deleteExistingItem(webmark_id) {
 function deleteWebMark(webmark_id) {
   const auth = firebase.auth();
 
-  if (token == null || token == "") {
-    alert('Please log in and try again.');
-    return;
-  }
-
   var server = "http://127.0.0.1:5000";
   var appdir = "/items/delete/" + webmark_id;
 
@@ -132,6 +133,14 @@ function deleteWebMark(webmark_id) {
         .then(function(result) {
           displayWebMarks();
       });
+    },
+    error: function(res){
+      if (res.responseText == "Unauthorized Access") {
+        alert('Please log in to delete a WebMark.');
+      } else {
+        alert(res.responseJSON["error"]);
+      }
+      return;
     }
   })
 };
