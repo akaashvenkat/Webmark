@@ -413,9 +413,12 @@ async function displayWebMarks() {
 async function loading(){
         x = document.getElementsByClassName("mark");
           y = x[0];
-          y.style.border = "2px solid green";
-          spinner = document.createElement('div');
+          y.style.border = "2px solid #FF8E2D";
+          // spinner = document.createElement('div');
+          // spinner.setAttribute("id","spinner");
+          spinner = document.createElement('IMG');
           spinner.setAttribute("id","spinner");
+          spinner.src = "../images/bookmark.png"
           y.appendChild(spinner);
 
 }
@@ -456,3 +459,36 @@ async function displayFirstWebMark() {
         }
 
 };
+
+function loading_popup(){
+  popup = document.createElement("div");
+  popup.setAttribute("id","loading_popup");
+  popup.innerHTML = "Loading";
+
+  loading_dots = document.createElement("div");
+  loading_dots.setAttribute("id","loading_spinner");
+  popup.appendChild(loading_dots);
+
+  dot_1 = document.createElement("div");
+  dot_1.setAttribute("class","bounce1");
+
+  dot_2 = document.createElement("div");
+  dot_2.setAttribute("class","bounce2");
+
+  dot_3 = document.createElement("div");
+  dot_3.setAttribute("class","bounce3");
+
+
+}
+
+function delete_loading_popup(){
+  popup = document.getElementById("loading_popup");
+  popup.remove()
+}
+
+function delete_webmark_popup(){
+  popup = document.createElement("div");
+  popup.setAttribute("id","delete_popup");
+  popup.innerHTML = "WebMark Deleted";
+  setTimeout(function(){popup.remove()}, 5000);
+}
