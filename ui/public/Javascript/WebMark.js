@@ -265,6 +265,11 @@ async function displayWebMarks() {
         one_close = document.createElement('span');
         one_close.innerHTML = "&times";
         one_close.setAttribute("class","close");
+
+        if(items[counter][2] == ""){
+          one_close.style.visibility = "hidden";
+        }
+
         one_mark.appendChild(one_close);
 
       }
@@ -481,6 +486,8 @@ async function displayFirstWebMark() {
           one_img.src = "data:image/gif;base64,"+items[counter][2]+"";
           item.replaceChild(one_img, item.childNodes[0]);
         }
+
+      item.childNodes[1].style.visibility = "visible";
 
 };
 
