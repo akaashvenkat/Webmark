@@ -523,7 +523,7 @@ async function delete_loading_popup(){
 async function delete_webmark_popup(){
   popup = document.createElement("div");
   popup.setAttribute("id", "delete_popup");
-  popup.innerHTML = "Deleting WebMark";
+  popup.innerHTML = "Deleting WebMark...";
   document.body.appendChild(popup);
 }
 

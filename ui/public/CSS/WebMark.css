@@ -274,7 +274,7 @@ input:focus::placeholder{
 #delete_popup{
 	display: flex;
 	margin-right: 92.5%;
-	width: 250px;
+	width: 203px;
 	height: 40px;
 	border:2px solid red ;
 	margin-left: 7.5%;
