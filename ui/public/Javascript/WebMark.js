@@ -1,7 +1,3 @@
-bigdivs = 0;
-twothree_divs = 0;
-fourfive_divs = 0;
-
 items = [];
 
 var config = firebaseConfig;
@@ -18,6 +14,13 @@ async function addExistingItems(existing_items) {
 };
 
 window.addEventListener('load', (event) => {
+  loading_popup()
+    .then(function(result) {
+      getWebMarks();
+    });
+});
+
+async function getWebMarks() {
   const auth = firebase.auth();
 
   var server = "http://127.0.0.1:5000";
@@ -35,18 +38,29 @@ window.addEventListener('load', (event) => {
       addExistingItems(res)
         .then(function(result) {
           displayWebMarks()
+            .then(function(result) {
+              delete_loading_popup();
+            });
         });
     },
     error: function(res){
       if (res.responseText == "Unauthorized Access") {
-        alert('Please log in to view your WebMarks.');
+        delete_loading_popup()
+          .then(function(result) {
+            alert('Please log in to view your WebMarks.');
+            return;
+          });
       } else {
-        alert(res.responseJSON["error"]);
+        delete_loading_popup()
+          .then(function(result) {
+            alert(res.responseJSON["error"]);
+            return;
+          });
       }
       return;
     }
   })
-});
+};
 
 enter_link.addEventListener('keyup', function (e) {
   if (e.keyCode == 13) {
@@ -170,16 +184,26 @@ function deleteWebMark(webmark_id) {
     success: function(res){
       deleteExistingItem(webmark_id)
         .then(function(result) {
-          displayWebMarks();
-      });
+          displayWebMarks()
+            .then(function(result) {
+              delete_delete_webmark_popup();
+            });
+        });
     },
     error: function(res){
       if (res.responseText == "Unauthorized Access") {
-        alert('Please log in to delete a WebMark.');
+        delete_delete_webmark_popup()
+          .then(function(result) {
+            alert('Please log in to delete a WebMark.');
+            return;
+          });
       } else {
-        alert(res.responseJSON["error"]);
+        delete_delete_webmark_popup()
+          .then(function(result) {
+            alert(res.responseJSON["error"]);
+            return;
+          });
       }
-      return;
     }
   })
 };
@@ -198,7 +222,6 @@ async function displayWebMarks() {
         WebMarks_div = document.createElement('div');
         WebMarks_div.setAttribute("id", "WebMarks");
         WebMarks_div.setAttribute("class", "bigdivs");
-        bigdivs = bigdivs + 1;
         document.body.appendChild(WebMarks_div);
 
         first_row = document.createElement('div');
@@ -404,8 +427,11 @@ async function displayWebMarks() {
 
     items_array.forEach(function(item) {
       item.childNodes[1].addEventListener("click", function() {
-        item_id = parseInt(item.getAttribute("item_id"));
-        deleteWebMark(items[item_id][0]);
+        delete_webmark_popup()
+          .then(function(result) {
+            item_id = parseInt(item.getAttribute("item_id"));
+            deleteWebMark(items[item_id][0]);
+        });
       });
     });
 };
@@ -414,8 +440,6 @@ async function loading(){
         x = document.getElementsByClassName("mark");
           y = x[0];
           y.style.border = "2px solid #FF8E2D";
-          // spinner = document.createElement('div');
-          // spinner.setAttribute("id","spinner");
           spinner = document.createElement('IMG');
           spinner.setAttribute("id","spinner");
           spinner.src = "../images/bookmark.png"
@@ -460,10 +484,10 @@ async function displayFirstWebMark() {
 
 };
 
-function loading_popup(){
+async function loading_popup(){
   popup = document.createElement("div");
   popup.setAttribute("id","loading_popup");
-  popup.innerHTML = "Loading";
+  popup.innerHTML = "Loading WebMarks";
 
   loading_dots = document.createElement("div");
   loading_dots.setAttribute("id","loading_spinner");
@@ -478,17 +502,25 @@ function loading_popup(){
   dot_3 = document.createElement("div");
   dot_3.setAttribute("class","bounce3");
 
-
+  loading_dots.appendChild(dot_1);
+  loading_dots.appendChild(dot_2);
+  loading_dots.appendChild(dot_3);
+  document.body.appendChild(popup);
 }
 
-function delete_loading_popup(){
+async function delete_loading_popup(){
   popup = document.getElementById("loading_popup");
-  popup.remove()
+  popup.remove();
 }
 
-function delete_webmark_popup(){
+async function delete_webmark_popup(){
   popup = document.createElement("div");
-  popup.setAttribute("id","delete_popup");
-  popup.innerHTML = "WebMark Deleted";
-  setTimeout(function(){popup.remove()}, 5000);
+  popup.setAttribute("id", "delete_popup");
+  popup.innerHTML = "Deleting WebMark";
+  document.body.appendChild(popup);
+}
+
+async function delete_delete_webmark_popup(){
+  popup = document.getElementById("delete_popup");
+  popup.remove();
 }
