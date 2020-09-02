@@ -33,6 +33,10 @@ def create_item():
     if url_updated == True:
         screenshot = "check iframe"
     else:
+
+        if url == "":
+            return {'error': 'Please enter a valid URL to add as a WebMark.'}, 400
+
         screenshot = get_base_64(url)
         if screenshot == False:
             screenshot = "screenshot unavailable"
@@ -212,24 +216,28 @@ def update_url(url):
 
     url_updated = False
 
-    if "youtube.com" in url:
-        id = url.split("?v=")[1]
-        id = id.split("&")[0]
-        id = id.replace("/", "")
-        url = "https://www.youtube.com/embed/" + id
-        url_updated = True
-    elif "vimeo.com" in url:
-        id = url.split("vimeo.com/")[1]
-        id = id.replace("/", "")
-        url = "https://player.vimeo.com/video/" + id
-        url_updated = True
-    elif "instagram.com" in url:
-        if url[len(url)-1] != "/":
-            url = url + "/"
-        url = url + "embed"
-        url_updated = True
+    try:
+        if "youtube.com" in url and (("http://youtube.com" != url) and ("https://youtube.com" != url)) :
+            id = url.split("?v=")[1]
+            id = id.split("&")[0]
+            id = id.replace("/", "")
+            url = "https://www.youtube.com/embed/" + id
+            url_updated = True
+        elif "vimeo.com" in url and (("http://vimeo.com" != url) and ("https://vimeo.com" != url)) :
+            id = url.split("vimeo.com/")[1]
+            id = id.replace("/", "")
+            url = "https://player.vimeo.com/video/" + id
+            url_updated = True
+        elif "instagram.com" in url and (("http://instagram.com" != url) and ("https://instagram.com" != url)) :
+            if url[len(url)-1] != "/":
+                url = url + "/"
+            url = url + "embed"
+            url_updated = True
 
-    return url, url_updated
+        return url, url_updated
+
+    except:
+        return "", False
 
 
 def get_firebase_items(items):
