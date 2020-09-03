@@ -24,6 +24,14 @@ iframe {
 	margin-left: 15px;
 }
 
+@media only screen and (max-width: 500px) {
+	#logo{
+		width: 140px;
+		height: 30px;
+		margin-left: 15px;
+	}
+}
+
 #spinner {
   width: 10%;
   /*height: 15%;*/
@@ -218,6 +226,7 @@ input:focus::placeholder{
 
 #one:hover{
 	width: 65%;
+	cursor: pointer;
 }
 
 #one:hover .close{
@@ -230,6 +239,10 @@ input:focus::placeholder{
     font-weight: bold;
 }
 
+#two:hover{
+	cursor: pointer;
+}
+
 #two:hover .close{
 	display: block;
 	position: absolute;
@@ -238,6 +251,10 @@ input:focus::placeholder{
     color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
+}
+
+#three:hover{
+	cursor: pointer;
 }
 
 #three:hover .close{
@@ -250,6 +267,10 @@ input:focus::placeholder{
     font-weight: bold;
 }
 
+#four:hover{
+	cursor: pointer;
+}
+
 #four:hover .close{
 	display: block;
 	position: absolute;
@@ -258,6 +279,10 @@ input:focus::placeholder{
     color: #FF8E2D;
     font-size: 35px;
     font-weight: bold;
+}
+
+#five:hover{
+	cursor: pointer;
 }
 
 #five:hover .close{

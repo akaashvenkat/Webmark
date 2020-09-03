@@ -431,6 +431,14 @@ async function displayWebMarks() {
     items_array = document.querySelectorAll(".mark");
 
     items_array.forEach(function(item) {
+      item.childNodes[0].addEventListener("click", function() {
+            console.log("FUCK")
+            console.log(item.getAttribute("item_id"));
+            window.open(items[parseInt(item.getAttribute("item_id"))][1], '_blank');
+      });
+    });
+
+    items_array.forEach(function(item) {
       item.childNodes[1].addEventListener("click", function() {
         delete_webmark_popup()
           .then(function(result) {
