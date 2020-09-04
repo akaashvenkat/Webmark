@@ -432,9 +432,8 @@ async function displayWebMarks() {
 
     items_array.forEach(function(item) {
       item.childNodes[0].addEventListener("click", function() {
-            console.log("FUCK")
-            console.log(item.getAttribute("item_id"));
-            window.open(items[parseInt(item.getAttribute("item_id"))][1], '_blank');
+          item_id = parseInt(item.getAttribute("item_id"));
+          window.open(items[item_id][1], '_blank');
       });
     });
 
@@ -495,8 +494,13 @@ async function displayFirstWebMark() {
           item.replaceChild(one_img, item.childNodes[0]);
         }
 
-      item.childNodes[1].style.visibility = "visible";
+        item.childNodes[0].addEventListener("click", function() {
+            item_id = parseInt(item.getAttribute("item_id"));
+            window.open(items[counter][1], '_blank');
+        });
 
+
+      item.childNodes[1].style.visibility = "visible";
 };
 
 async function loading_popup(){
