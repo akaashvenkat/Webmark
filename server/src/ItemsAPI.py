@@ -45,6 +45,9 @@ def create_item():
     order = 0
     owner_uid = g.uid
 
+    if len(screenshot) > 1040000:
+        return {'error': 'The WebMark you are trying to add contains too many megabytes. Please try a different WebMark.'}, 500
+
     response, response_code = get_items()
     if len(response) != 0:
         for item in response:
