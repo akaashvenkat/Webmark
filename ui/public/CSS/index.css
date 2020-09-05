@@ -350,8 +350,7 @@ input{
 
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
+#signup_email, #signup_password, #signup_confirm_password {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -388,13 +387,16 @@ img.avatar {
 }
 
 .container {
+	display: flex;
 	margin-top: 50px;
-  padding: 16px;
+    padding: 16px;
+    flex-direction: column;
 }
 
 span.psw {
   float: right;
   padding-top: 16px;
+  margin-top: 14px;
 }
 
 /* The Modal (background) */
@@ -414,9 +416,9 @@ span.psw {
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #ECECE2;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
+  border: 1px solid #204720;
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
@@ -461,13 +463,53 @@ span.psw {
 
 }
 
+#login_fp{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 85%;
+	align-self: center;
+}
+
+#login_button{
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	cursor: pointer;
+	margin-right: 15px;
+	margin-top: 16px;
+}
+
+#signin_email{
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+#signin_password{
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-self: center;
+}
+
 #orsignin{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-top: 40px;
-	margin-bottom: 20px;
+	margin: 16px 0px;
 	color: #4E5166;
 }
 
@@ -476,5 +518,5 @@ span.psw {
 	flex-direction: row;
 	align-self: center;
 	justify-content: center;
-
+	margin-bottom: 16px;
 }

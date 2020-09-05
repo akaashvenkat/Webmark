@@ -1,0 +1,86 @@
+* {
+  font-family: "Nunito Sans";
+}
+
+body {
+  background-color: #ECECE2;
+}
+
+#logo{
+	width: 200px;
+	margin-left: 15px;
+}
+
+@media only screen and (max-width: 500px) {
+	#logo{
+		width: 140px;
+		height: 30px;
+		margin-left: 15px;
+	}
+}
+
+
+#photo_row{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.item{
+	display: flex;
+	margin: 25px auto 0px auto;
+	flex-direction: column;
+	align-content: center;
+	width: 500px;
+
+}
+
+.item img{
+	display:block;
+	max-width: 100%;
+	object-position: 0 0;
+	border: 1px solid #FF8E2D;
+}
+
+.item video{
+	display:block;
+	min-width: 100%; 
+    min-height: 100%; 
+  	border: 1px solid #FF8E2D;
+}
+
+.item p{
+	font-size: 20px;
+}
+
+@media only screen and (max-width: 1400px) {
+	.item{
+		width: 400px;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	#photo_row{
+		flex-direction: column;
+	}
+	.item{
+		width: 500px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#photo_row{
+		margin-top: 50px;
+	}
+	.item{
+		width: 300px;
+	}
+	.item video{
+		width: 300px;
+	}
+}
+
+
