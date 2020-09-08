@@ -65,9 +65,12 @@ body {
 @media only screen and (max-width: 900px) {
 	#photo_row{
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 	.item{
 		width: 500px;
+		align-self: center;
 	}
 }
 
@@ -81,6 +84,24 @@ body {
 	.item video{
 		width: 300px;
 	}
+}
+
+#continue{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+#continue_button{
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	cursor: pointer;
 }
 
 
