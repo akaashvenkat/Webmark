@@ -23,26 +23,29 @@
 	<img id="logo" src="../images/logo.png">
 </div>
 
-<div id="photo_row">
+<div id="video_row">
 
 	<div class = "item">
-		<img src="../images/one.png">
-<!-- 		<p>Add websites, videos, and pictures as WebMarks</p> -->
+		<video id="one"  width="500" controls>
+			<source src="../videos/walkthrough_1.mov"  type="video/mp4">
+		</video>
+		<p>Add websites, videos, and pictures as WebMarks</p>
 	</div>
 
 	<div class = "item">
-		<img src="../images/two.png">
-		<!-- <p>Delete Webmarks <br><br></p> -->
-	</div>
+		<video id="two"  width="500" controls>
+	  	<source src="../videos/walkthrough_2.mov"  type="video/mp4">
+	  </video>
+	  <p>Click your WebMarks to go to the sites</p>
+  </div>
 
 	<div class = "item">
-		<video class="video" id="three"  width="500" 
-	       name="clickable" onmouseover="this.play()" onmouseout="this.pause()"  preload="auto">
-	       	<source src="../images/three.mov"  type="video/mp4">
-	      </video>
-	   <!--   <p>Click your WebMarks to go to the sites <br><br></p> -->
-    </div>
-	
+		<video id="three"  width="500" controls>
+	  	<source src="../videos/walkthrough_3.mov"  type="video/mp4">
+	  </video>
+	  <p>Delete Webmarks</p>
+  </div>
+
 </div>
 
 <div id="continue">
@@ -53,4 +56,3 @@
 
 
 </html>
-
