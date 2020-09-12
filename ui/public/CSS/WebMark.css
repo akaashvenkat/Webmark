@@ -24,11 +24,19 @@ iframe {
 	margin-left: 15px;
 }
 
+#logo:hover{
+	cursor: pointer;
+}
+
 @media only screen and (max-width: 500px) {
 	#logo{
 		width: 140px;
 		height: 30px;
 		margin-left: 15px;
+	}
+
+	#logo:hover{
+		cursor: none;
 	}
 }
 
