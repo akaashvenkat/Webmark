@@ -3,13 +3,12 @@ from firebase_admin import firestore
 from flask import Blueprint, request, g
 from requests.exceptions import ConnectionError, InvalidURL
 from selenium import webdriver
-
-from src.TokenAuthentication import auth
 from src.Item import Item
-
+from src.TokenAuthentication import auth
 import firebase_admin
 import requests
 import sys
+
 
 items_api = Blueprint('items_api', __name__)
 
@@ -45,8 +44,13 @@ def create_item():
     order = 0
     owner_uid = g.uid
 
-    if len(screenshot) > 1040000:
-        return {'error': 'The WebMark you are trying to add contains too many megabytes. Please try a different WebMark.'}, 500
+    if len(screenshot) > 1048480:
+        screenshot = get_smaller_base_64(url)
+        if screenshot == False:
+            screenshot = "screenshot unavailable"
+
+        if len(screenshot) > 1048480:
+            return {'error': 'The WebMark you are trying to add contains too many megabytes. Please try a different WebMark.'}, 500
 
     response, response_code = get_items()
     if len(response) != 0:
@@ -204,6 +208,24 @@ def get_base_64(url):
 
     driver = webdriver.Chrome(options=options)
     driver.set_window_size(1024, 768)
+
+    try:
+        driver.get(url)
+        base_64 = driver.get_screenshot_as_base64()
+    except Exception as e:
+        base_64 = False
+
+    driver.quit()
+    return base_64
+
+
+def get_smaller_base_64(url):
+
+    options = webdriver.ChromeOptions()
+    options.headless = True
+
+    driver = webdriver.Chrome(options=options)
+    driver.set_window_size(665, 500)
 
     try:
         driver.get(url)

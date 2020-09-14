@@ -4,8 +4,8 @@ var config = firebaseConfig;
 firebase.initializeApp(config);
 
 var token = sessionStorage.getItem('token');
-var number = document.createAttribute("number");
 var enter_link = document.getElementById('enter_link');
+
 
 async function addExistingItems(existing_items) {
   for (const [key, value] of Object.entries(existing_items)) {
@@ -14,7 +14,7 @@ async function addExistingItems(existing_items) {
 };
 
 window.addEventListener('load', (event) => {
-  loading_popup()
+  start_loading_popup()
     .then(function(result) {
       getWebMarks();
     });
@@ -34,24 +34,24 @@ async function getWebMarks() {
     headers: {
       "Authorization": "token " + token
     },
-    success: function(res){
+    success: function(res) {
       addExistingItems(res)
         .then(function(result) {
           displayWebMarks()
             .then(function(result) {
-              delete_loading_popup();
+              stop_loading_popup();
             });
         });
     },
-    error: function(res){
+    error: function(res) {
       if (res.responseText == "Unauthorized Access") {
-        delete_loading_popup()
+        stop_loading_popup()
           .then(function(result) {
             alert('Please log in to view your WebMarks.');
             return;
           });
       } else {
-        delete_loading_popup()
+        stop_loading_popup()
           .then(function(result) {
             alert(res.responseJSON["error"]);
             return;
@@ -68,7 +68,7 @@ enter_link.addEventListener('keyup', function (e) {
       .then(function(result) {
         displayWebMarks()
           .then(function(result) {
-            loading()
+            start_item_loading()
               .then(function(result) {
                 addWebMark()
               });
@@ -118,18 +118,18 @@ function addWebMark() {
     headers: {
       "Authorization": "token " + token
     },
-    success: function(res){
+    success: function(res) {
       addNewDetailedItem(res.item_id, res.url, res.screenshot)
         .then(function(result) {
           	displayFirstWebMark()
               .then(function(result) {
-              	done_loading();
+              	stop_item_loading();
               });
           	enter_link.value = "";
             enter_link.placeholder = "Upload Link Here"
         });
     },
-    error: function(res){
+    error: function(res) {
       if (res.responseText == "Unauthorized Access") {
         deleteNewBlankItem()
           .then(function(result) {
@@ -181,24 +181,24 @@ function deleteWebMark(webmark_id) {
       "Authorization": "token " + token,
       'Content-Type': 'application/json'
     },
-    success: function(res){
+    success: function(res) {
       deleteExistingItem(webmark_id)
         .then(function(result) {
           displayWebMarks()
             .then(function(result) {
-              delete_delete_webmark_popup();
+              stop_delete_popup();
             });
         });
     },
-    error: function(res){
+    error: function(res) {
       if (res.responseText == "Unauthorized Access") {
-        delete_delete_webmark_popup()
+        stop_delete_popup()
           .then(function(result) {
             alert('Please log in to delete a WebMark.');
             return;
           });
       } else {
-        delete_delete_webmark_popup()
+        stop_delete_popup()
           .then(function(result) {
             alert(res.responseJSON["error"]);
             return;
@@ -208,10 +208,9 @@ function deleteWebMark(webmark_id) {
   })
 };
 
-
 async function displayWebMarks() {
 
-  document.querySelectorAll('.bigdivs').forEach(function(a){
+  document.querySelectorAll('.bigdivs').forEach(function(a) {
     a.remove()
   })
 
@@ -235,30 +234,30 @@ async function displayWebMarks() {
         one_mark.setAttribute("item_id", counter);
         first_row.appendChild(one_mark);
 
-        if(items[counter][2] == "screenshot unavailable"){
+        if (items[counter][2] == "screenshot unavailable") {
           one_img = document.createElement('IMG');
           one_img.setAttribute("class", "WebMark_img");
           one_img.src = "../images/unavailable.png"
           one_mark.appendChild(one_img);
         }
 
-        else if(items[counter][2] == "check iframe"){
+        else if (items[counter][2] == "check iframe") {
           one_iframe = document.createElement('iframe');
           one_iframe.setAttribute("class", "WebMark_img");
           one_iframe.src = items[counter][1];
           one_mark.appendChild(one_iframe);
         }
 
-        else if(items[counter][2] == ""){
+        else if (items[counter][2] == "") {
           one_blank_img = document.createElement('IMG');
           one_blank_img.setAttribute("class", "WebMark_blank_img");
           one_mark.appendChild(one_blank_img);
         }
 
-        else{
+        else {
           one_img = document.createElement('IMG');
           one_img.setAttribute("class", "WebMark_img");
-          one_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          one_img.src = "data:image/gif;base64," + items[counter][2] + "";
           one_mark.appendChild(one_img);
         }
 
@@ -266,12 +265,11 @@ async function displayWebMarks() {
         one_close.innerHTML = "&times";
         one_close.setAttribute("class","close");
 
-        if(items[counter][2] == ""){
+        if (items[counter][2] == "") {
           one_close.style.visibility = "hidden";
         }
 
         one_mark.appendChild(one_close);
-
       }
 
       else if (counter % 5 == 1) {
@@ -286,24 +284,24 @@ async function displayWebMarks() {
         two_mark.setAttribute("item_id", counter);
         twothree_mark.appendChild(two_mark);
 
-        if(items[counter][2] == "screenshot unavailable"){
+        if (items[counter][2] == "screenshot unavailable") {
           two_img = document.createElement('IMG');
           two_img.setAttribute("class", "WebMark_img");
           two_img.src = "../images/unavailable.png"
           two_mark.appendChild(two_img);
         }
 
-        else if(items[counter][2] == "check iframe"){
+        else if (items[counter][2] == "check iframe") {
           two_iframe = document.createElement('iframe');
           two_iframe.setAttribute("class", "WebMark_img");
           two_iframe.src = items[counter][1];
           two_mark.appendChild(two_iframe);
         }
 
-        else{
+        else {
           two_img = document.createElement('IMG');
           two_img.setAttribute("class", "WebMark_img");
-          two_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          two_img.src = "data:image/gif;base64," + items[counter][2] + "";
           two_mark.appendChild(two_img);
         }
 
@@ -311,7 +309,6 @@ async function displayWebMarks() {
         two_close.innerHTML = "&times";
         two_close.setAttribute("class","close");
         two_mark.appendChild(two_close);
-
       }
 
       else if (counter % 5 == 2) {
@@ -322,24 +319,24 @@ async function displayWebMarks() {
         three_mark.setAttribute("item_id", counter);
         twothree_mark.appendChild(three_mark);
 
-        if(items[counter][2] == "screenshot unavailable"){
+        if (items[counter][2] == "screenshot unavailable") {
           three_img = document.createElement('IMG');
           three_img.setAttribute("class", "WebMark_img");
           three_img.src = "../images/unavailable.png"
           three_mark.appendChild(three_img);
         }
 
-        else if(items[counter][2] == "check iframe"){
+        else if (items[counter][2] == "check iframe") {
           three_iframe = document.createElement('iframe');
           three_iframe.setAttribute("class", "WebMark_img");
           three_iframe.src = items[counter][1];
           three_mark.appendChild(three_iframe);
         }
 
-        else{
+        else {
           three_img = document.createElement('IMG');
           three_img.setAttribute("class", "WebMark_img");
-          three_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          three_img.src = "data:image/gif;base64," + items[counter][2] + "";
           three_mark.appendChild(three_img);
         }
 
@@ -347,7 +344,6 @@ async function displayWebMarks() {
         three_close.innerHTML = "&times";
         three_close.setAttribute("class","close");
         three_mark.appendChild(three_close);
-
       }
 
       else if (counter % 5 == 3) {
@@ -363,24 +359,24 @@ async function displayWebMarks() {
         WebMarks_div.appendChild(four_mark);
         second_row.appendChild(four_mark);
 
-        if(items[counter][2] == "screenshot unavailable"){
+        if (items[counter][2] == "screenshot unavailable") {
           four_img = document.createElement('IMG');
           four_img.setAttribute("class", "WebMark_img");
           four_img.src = "../images/unavailable.png"
           four_mark.appendChild(four_img);
         }
 
-        else if(items[counter][2] == "check iframe"){
+        else if (items[counter][2] == "check iframe") {
           four_iframe = document.createElement('iframe');
           four_iframe.setAttribute("class", "WebMark_img");
           four_iframe.src = items[counter][1];
           four_mark.appendChild(four_iframe);
         }
 
-        else{
+        else {
           four_img = document.createElement('IMG');
           four_img.setAttribute("class", "WebMark_img");
-          four_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          four_img.src = "data:image/gif;base64," + items[counter][2] + "";
           four_mark.appendChild(four_img);
         }
 
@@ -388,7 +384,6 @@ async function displayWebMarks() {
         four_close.innerHTML = "&times";
         four_close.setAttribute("class","close");
         four_mark.appendChild(four_close);
-
       }
 
       else if (counter % 5 == 4) {
@@ -399,14 +394,14 @@ async function displayWebMarks() {
         five_mark.setAttribute("item_id", counter);
         second_row.appendChild(five_mark);
 
-        if(items[counter][2] == "screenshot unavailable"){
+        if (items[counter][2] == "screenshot unavailable") {
           five_img = document.createElement('IMG');
           five_img.setAttribute("class", "WebMark_img");
           five_img.src = "../images/unavailable.png"
           five_mark.appendChild(five_img);
         }
 
-        else if(items[counter][2] == "check iframe"){
+        else if (items[counter][2] == "check iframe") {
           five_iframe = document.createElement('iframe');
           five_iframe.setAttribute("class", "WebMark_img");
           five_iframe.src = items[counter][1];
@@ -416,7 +411,7 @@ async function displayWebMarks() {
         else {
           five_img = document.createElement('IMG');
           five_img.setAttribute("class", "WebMark_img");
-          five_img.src = "data:image/gif;base64,"+items[counter][2]+"";
+          five_img.src = "data:image/gif;base64," + items[counter][2] + "";
           five_mark.appendChild(five_img);
         }
 
@@ -424,7 +419,6 @@ async function displayWebMarks() {
         five_close.innerHTML = "&times";
         five_close.setAttribute("class","close");
         five_mark.appendChild(five_close);
-
       }
     }
 
@@ -439,7 +433,7 @@ async function displayWebMarks() {
 
     items_array.forEach(function(item) {
       item.childNodes[1].addEventListener("click", function() {
-        delete_webmark_popup()
+        start_delete_popup()
           .then(function(result) {
             item_id = parseInt(item.getAttribute("item_id"));
             deleteWebMark(items[item_id][0]);
@@ -448,22 +442,21 @@ async function displayWebMarks() {
     });
 };
 
-async function loading(){
-        x = document.getElementsByClassName("mark");
-          y = x[0];
-          y.style.border = "2px solid #FF8E2D";
-          spinner = document.createElement('IMG');
-          spinner.setAttribute("id","spinner");
-          spinner.src = "../images/bookmark.png"
-          y.appendChild(spinner);
-
+async function start_item_loading() {
+  x = document.getElementsByClassName("mark");
+  y = x[0];
+  y.style.border = "2px solid #FF8E2D";
+  spinner = document.createElement('IMG');
+  spinner.setAttribute("id","spinner");
+  spinner.src = "../images/bookmark.png"
+  y.appendChild(spinner);
 }
 
-async function done_loading(){
+async function stop_item_loading() {
   items_array = document.querySelectorAll(".mark");
   item = items_array[0]
-    item.style.border = "none";
-    item.childNodes[2].remove();
+  item.style.border = "none";
+  item.childNodes[2].remove();
 }
 
 async function displayFirstWebMark() {
@@ -471,39 +464,38 @@ async function displayFirstWebMark() {
   items_array = document.querySelectorAll(".mark");
   counter = 0;
 
-      item = items_array[counter];
+  item = items_array[counter];
 
-        if(items[counter][2] == "screenshot unavailable"){
-          one_img = document.createElement('IMG');
-          one_img.setAttribute("class", "WebMark_img");
-          one_img.src = "../images/unavailable.png"
-          item.replaceChild(one_img, item.childNodes[0]);
-        }
+  if (items[counter][2] == "screenshot unavailable") {
+    one_img = document.createElement('IMG');
+    one_img.setAttribute("class", "WebMark_img");
+    one_img.src = "../images/unavailable.png"
+    item.replaceChild(one_img, item.childNodes[0]);
+  }
 
-        else if(items[counter][2] == "check iframe"){
-          one_iframe = document.createElement('iframe');
-          one_iframe.setAttribute("class", "WebMark_img");
-          one_iframe.src = items[counter][1];
-          item.replaceChild(one_iframe, item.childNodes[0]);
-        }
+  else if (items[counter][2] == "check iframe") {
+    one_iframe = document.createElement('iframe');
+    one_iframe.setAttribute("class", "WebMark_img");
+    one_iframe.src = items[counter][1];
+    item.replaceChild(one_iframe, item.childNodes[0]);
+  }
 
-        else{
-          one_img = document.createElement('IMG');
-          one_img.setAttribute("class", "WebMark_img");
-          one_img.src = "data:image/gif;base64,"+items[counter][2]+"";
-          item.replaceChild(one_img, item.childNodes[0]);
-        }
+  else {
+    one_img = document.createElement('IMG');
+    one_img.setAttribute("class", "WebMark_img");
+    one_img.src = "data:image/gif;base64," + items[counter][2] + "";
+    item.replaceChild(one_img, item.childNodes[0]);
+  }
 
-        item.childNodes[0].addEventListener("click", function() {
-            item_id = parseInt(item.getAttribute("item_id"));
-            window.open(items[counter][1], '_blank');
-        });
+  item.childNodes[0].addEventListener("click", function() {
+    item_id = parseInt(item.getAttribute("item_id"));
+    window.open(items[counter][1], '_blank');
+  });
 
-
-      item.childNodes[1].style.visibility = "visible";
+  item.childNodes[1].style.visibility = "visible";
 };
 
-async function loading_popup(){
+async function start_loading_popup() {
   popup = document.createElement("div");
   popup.setAttribute("id","loading_popup");
   popup.innerHTML = "Loading WebMarks";
@@ -527,19 +519,19 @@ async function loading_popup(){
   document.body.appendChild(popup);
 }
 
-async function delete_loading_popup(){
+async function stop_loading_popup() {
   popup = document.getElementById("loading_popup");
   popup.remove();
 }
 
-async function delete_webmark_popup(){
+async function start_delete_popup() {
   popup = document.createElement("div");
   popup.setAttribute("id", "delete_popup");
   popup.innerHTML = "Deleting WebMark...";
   document.body.appendChild(popup);
 }
 
-async function delete_delete_webmark_popup(){
+async function stop_delete_popup() {
   popup = document.getElementById("delete_popup");
   popup.remove();
 }

@@ -6,12 +6,12 @@ body {
   background-color: #ECECE2;
 }
 
-#logo{
+#logo {
 	width: 200px;
 	margin-left: 15px;
 }
 
-#header{
+#header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -28,7 +28,7 @@ body {
 	}
 }
 
-#video_row{
+#video_row {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
@@ -37,70 +37,69 @@ body {
 	margin-top: 100px;
 }
 
-.item{
+.item {
 	display: flex;
 	margin: 25px auto 0px auto;
 	flex-direction: column;
 	align-content: center;
 	width: 400px;
-
 }
 
-.item img{
+.item img {
 	display:block;
 	max-width: 100%;
 	object-position: 0 0;
 	border: 1px solid #FF8E2D;
 }
 
-.item video{
+.item video {
 	display:block;
 	min-width: 100%;
-    min-height: 100%;
-  	border: 1px solid #FF8E2D;
-  	width:300px;
+  min-height: 100%;
+  border: 1px solid #FF8E2D;
+  width:300px;
 }
 
-.item p{
+.item p {
 	font-size: 20px;
 }
 
 @media only screen and (max-width: 1400px) {
-	.item{
+	.item {
 		width: 400px;
 	}
 }
 
 @media only screen and (max-width: 1050px) {
-	#video_row{
+	#video_row {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
-	.item{
+	.item {
 		width: 100%;
 		align-self: center;
 	}
 
-	.item video{
+	.item video {
 		width: 100%;
 	}
 }
 
 @media only screen and (max-width: 500px) {
-	#video_row{
+	#video_row {
 		margin-top: 50px;
 	}
 }
 
-#continue{
+#continue {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 50px;
 }
 
-#continue_button{
+#continue_button {
 	width: 130.6px;
 	height: 40px;
 	color: black;
