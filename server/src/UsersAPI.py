@@ -1,7 +1,6 @@
 from firebase_admin import auth as firebase_auth
 from firebase_admin import _auth_utils as firebase_auth_utils
 from flask import Blueprint, jsonify, request, g
-
 from src.TokenAuthentication import auth
 import firebase_admin
 import sys

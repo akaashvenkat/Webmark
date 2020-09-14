@@ -1,5 +1,4 @@
-function checkPass()
-{
+function checkPass() {
     var password = document.getElementById('signup_password');
     var confirm  = document.getElementById('signup_confirm_password');
     var message = document.getElementById('signup_confirm_message');
@@ -9,11 +8,9 @@ function checkPass()
 
     if ((password.value != confirm.value & confirm.value == 0) | (password.value == confirm.value & confirm.value == 0)) {
       confirm.style.backgroundColor = 'white';
-    }
-    else if(password.value == confirm.value){
+    } else if(password.value == confirm.value) {
       confirm.style.backgroundColor = good_color;
-    }
-    else{
+    } else{
       confirm.style.backgroundColor = bad_color;
     }
 }

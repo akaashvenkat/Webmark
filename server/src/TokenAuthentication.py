@@ -1,7 +1,8 @@
+from firebase_admin import auth as firebase_auth
 from flask import Flask, g
 from flask_httpauth import HTTPTokenAuth
 import firebase_admin
-from firebase_admin import auth as firebase_auth
+
 
 auth = HTTPTokenAuth(scheme='Token')
 

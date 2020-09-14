@@ -1,13 +1,11 @@
-from flask import Flask, g
-from flask_httpauth import HTTPTokenAuth
-from flask_cors import CORS, cross_origin
-
-import firebase_admin
 from firebase_admin import credentials
-
-from src.TokenAuthentication import auth
+from flask import Flask, g
+from flask_cors import CORS, cross_origin
+from flask_httpauth import HTTPTokenAuth
 from src.ItemsAPI import items_api
+from src.TokenAuthentication import auth
 from src.UsersAPI import users_api
+import firebase_admin
 
 
 cred = credentials.Certificate("full_path_to/instance/webmark_firebase_admin_key.json")
