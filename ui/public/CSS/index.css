@@ -1,0 +1,500 @@
+* {
+  font-family: "Nunito Sans";
+}
+body {
+  background-color: #ECECE2;
+}
+
+#header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+
+@media only screen and (max-width: 500px) {
+	#header {
+		width: 100%;
+		margin-top: 10px;
+		align-items: center;
+	}
+}
+
+#logo {
+	width: 200px;
+	margin-left: 15px;
+}
+
+@media only screen and (max-width: 500px) {
+	#logo {
+		width: 140px;
+		height: 30px;
+		margin-left: 15px;
+	}
+}
+
+#signin_button {
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+@media only screen and (max-width: 900px) {
+	#signin_button {
+		margin-right: 0px;
+	}
+}
+
+#midsection {
+	margin: 100px 4.5% 0px 4.5%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+@media only screen and (max-width: 900px) {
+	#midsection {
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#midsection {
+		margin-top: 50px;
+	}
+}
+
+#leftmid {
+	flex-direction: column;
+	width: 50%;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 900px) {
+	#leftmid {
+		align-self: center;
+		width: 400px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#leftmid {
+		align-self: center;
+		width: 300px;
+	}
+}
+#welcome {
+	font-size: 72px;
+}
+
+@media only screen and (max-width: 500px) {
+	#welcome {
+		align-self: center;
+		font-size: 54px;
+	}
+}
+
+#rightmid {
+	flex-direction: column;
+	width: 50%;
+	border: 1px solid #204720;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 900px) {
+	#rightmid {
+		align-self: center;
+		width: 400px;
+	}
+}
+
+#signupform {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 60px;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 900px) {
+	#signupform {
+		align-self: center;
+		width: 400px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#signupform {
+		padding: 20px 0px;
+		width: 250px;
+	}
+	#rightmid {
+		align-self: center;
+		width: 300px;
+	}
+}
+
+input {
+	height: 40px;
+	font-size: 18px;
+	border-radius: 8px;
+	border-color: #4E5166;
+}
+
+#signup_email {
+	width: 400px;
+	align-self: center;
+}
+
+@media only screen and (max-width: 900px) {
+	#signup_email {
+		width: 350px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#signup_email {
+		width: 100%;
+		align-self: flex-start;
+	}
+}
+
+#username {
+	width: 400px;
+	align-self: center;
+}
+
+#passwordrow {
+	display: flex;
+	width: 400px;
+	flex-direction: row;
+	align-self: center;
+}
+
+#signup_password {
+	display: flex;
+	width: 400px;
+	width: 50%;
+	align-self: center;
+}
+
+#signup_confirm_password {
+	display: flex;
+	width: 50%;
+	align-self: center;
+}
+
+@media only screen and (max-width: 900px) {
+	#passwordrow {
+		width: 350px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#passwordrow {
+		flex-direction: column;
+		width: 250px;
+	}
+	#signup_password {
+		width: 100%;
+		align-self: flex-start;
+	}
+	#signup_confirm_password {
+		width: 100%;
+		align-self: flex-start;
+	}
+}
+
+#or {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 0px;
+	color: #4E5166;
+}
+
+#signing {
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 12%;
+}
+
+#signin {
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	align-self: center;
+	cursor: pointer;
+}
+
+#signupdiv {
+	display: flex;
+	width: 400px;
+	flex-direction: row;
+	align-self: center;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+#signup_button {
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+	#signup_button {
+		margin-right: 25px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#signupdiv {
+		align-items: center;
+		justify-content: center;
+	}
+	#signup_button {
+		align-self: flex-end;
+	}
+}
+
+#googlesignupdiv {
+	display: flex;
+	width: 400px;
+	flex-direction: row;
+	align-self: center;
+	justify-content: center;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+.g-sign-in-button {
+  margin: 10px;
+  display: inline-block;
+  width: 240px;
+  height: 50px;
+  background-color: #4285f4;
+  color: #fff;
+  border-radius: 1px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+  transition: background-color .218s, border-color .218s, box-shadow .218s;
+}
+.g-sign-in-button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
+  box-shadow: 0 0 3px 3px rgba(66,133,244,.3);
+}
+.g-sign-in-button:active {
+  background-color: #3367D6;
+  transition: background-color 0.2s;
+}
+.g-sign-in-button .content-wrapper {
+  height: 100%;
+  width: 100%;
+  border: 1px solid transparent;
+}
+.g-sign-in-button img {
+    width: 18px;
+    height: 18px;
+}
+.g-sign-in-button .logo-wrapper {
+   padding: 15px;
+   background: #fff;
+   width: 48px;
+   height: 100%;
+   border-radius: 1px;
+   display: inline-block;
+}
+.g-sign-in-button .text-container {
+    font-family: Roboto,arial,sans-serif;
+    font-weight: 500;
+    letter-spacing: .21px;
+    font-size: 16px;
+    line-height: 48px;
+    vertical-align: top;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    width: 180px;
+}
+
+#signup_email, #signup_password, #signup_confirm_password {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+#signinlogin {
+  background-color: #FF8E2D;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+	display: flex;
+	margin-top: 50px;
+  padding: 16px;
+  flex-direction: column;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+  margin-top: 14px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #ECECE2;
+  margin: 5% auto 15% auto;
+  border: 1px solid #204720;
+  width: 80%;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+}
+
+#login_fp {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 85%;
+	align-self: center;
+}
+
+#login_button {
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	cursor: pointer;
+	margin-right: 15px;
+	margin-top: 16px;
+}
+
+#signin_email {
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+#signin_password {
+  width: 85%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+#orsignin {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin: 16px 0px;
+	color: #4E5166;
+}
+
+#googlesignindiv {
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+	justify-content: center;
+	margin-bottom: 16px;
+}

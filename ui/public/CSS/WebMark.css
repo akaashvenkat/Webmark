@@ -1,0 +1,369 @@
+* {
+  font-family: "Nunito Sans";
+}
+
+body {
+  background-color: #ECECE2;
+}
+
+iframe {
+  border-width: 0px;
+}
+
+#header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+}
+
+#logo {
+	width: 200px;
+	margin-left: 15px;
+}
+
+#logo:hover {
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+	#logo {
+		width: 140px;
+		height: 30px;
+		margin-left: 15px;
+	}
+
+	#logo:hover {
+		cursor: none;
+	}
+}
+
+#spinner {
+  width: 10%;
+  background-color: #ECECE2;
+  margin: auto auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {-webkit-transform: perspective(120px)}
+  50% {-webkit-transform: perspective(120px) rotateY(180deg)}
+  100% {-webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg)}
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+#searchfilter {
+	margin: 75px auto 25px auto;
+	flex-direction: row;
+	align-content: center;
+	justify-content: space-around;
+	padding: 0px 7.5%;
+	white-space: nowrap;
+}
+
+#enter_link {
+	margin: 0 auto;
+	width: 100%;
+	background-color: #ECECE2;
+	border-style: none none solid none;
+	font-size: 33px;
+	color: black;
+	border-color: black;
+	font-weight: bold;
+}
+
+::placeholder {
+  color:  #FF8E2D;
+  font-weight: bold;
+}
+
+#enter_link:hover {
+	cursor: pointer;
+}
+
+#enter_link:focus {
+	outline: none;
+	border-color: #FF8E2D;
+}
+
+input:focus::placeholder {
+	opacity: 1;
+}
+
+#filter {
+	margin: 0 auto;
+	border-color: #FF8E2D;
+	border-style: solid;
+	background-color: #ECECE2;
+	border-radius: 8px;
+	width: 20%;
+	font-size: 20px;
+	margin-left: 50px;
+}
+
+#filter:hover {
+	cursor: pointer;
+}
+
+#filter:focus {
+	border-color: red;
+	outline: none;
+}
+
+#WebMarks {
+	display: flex;
+	margin: 25px auto 0px auto;
+	flex-direction: column;
+	align-content: center;
+	width: 85%;
+}
+
+.WebMark_img {
+	display: block;
+	max-width: 100%;
+	object-fit: cover;
+	object-position: 0 0;
+}
+
+#firstrow {
+	display: flex;
+	margin-bottom: 50px;
+	height: 400px;
+}
+
+#one {
+	display: flex;
+	position: relative;
+	width: 65%;
+	margin-right: 50px;
+	height: 400px;
+}
+
+#one iframe {
+	width: 100%;
+}
+
+#twothree {
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+  height: 400px;
+}
+
+#two {
+	display: flex;
+	position: relative;
+	margin-bottom: 50px;
+	height: 175px;
+}
+
+#two iframe {
+	width: 100%;
+}
+
+#three {
+	display: flex;
+	position: relative;
+	height: 175px;
+}
+
+#three iframe {
+	width: 100%;
+}
+
+#secondrow {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+#four {
+	display: flex;
+	position: relative;
+	margin-bottom:50px;
+	width: 50%;
+	margin-right: 50px;
+	height: 300px;
+}
+
+#four iframe {
+	width: 100%;
+}
+
+#five {
+	display: flex;
+	position: relative;
+	margin-bottom: 50px;
+	width: 50%;
+	height: 300px;
+}
+
+#five iframe {
+	width: 100%;
+}
+
+.close {
+	display: none;
+}
+
+.close:hover {
+	cursor: pointer;
+}
+
+#one:hover {
+	width: 65%;
+	cursor: pointer;
+}
+
+#one:hover .close {
+	display: block;
+	position: absolute;
+  top: 0;
+  right: 2%;
+  color: #FF8E2D;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#two:hover {
+	cursor: pointer;
+}
+
+#two:hover .close {
+	display: block;
+	position: absolute;
+  top: 0;
+  right: 2%;
+  color: #FF8E2D;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#three:hover {
+	cursor: pointer;
+}
+
+#three:hover .close {
+	display: block;
+	position: absolute;
+  top: 0;
+  right: 2%;
+  color: #FF8E2D;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#four:hover {
+	cursor: pointer;
+}
+
+#four:hover .close {
+	display: block;
+	position: absolute;
+  top: 0;
+  right: 2%;
+  color: #FF8E2D;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#five:hover {
+	cursor: pointer;
+}
+
+#five:hover .close {
+	display: block;
+	position: absolute;
+  top: 0;
+  right: 2%;
+  color: #FF8E2D;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+
+#delete_popup {
+	display: flex;
+	margin-right: 92.5%;
+	width: 203px;
+	height: 40px;
+	border: 2px solid red;
+	margin-left: 7.5%;
+	position: fixed;
+	bottom: 20px;
+	z-index: 1;
+	background-color: #ECECE2;
+	font-size: 20px;
+	align-items: center;
+	padding-left: 20px;
+	font-weight: 600;
+}
+
+#loading_popup {
+	display: flex;
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 250px;
+	height: 40px;
+	z-index: 1;
+	background-color: #ECECE2;
+	font-size: 20px;
+	align-items: center;
+	padding-left: 20px;
+	font-weight: 600;
+}
+
+#loading_spinner {
+  width: 70px;
+  text-align: center;
+}
+
+#loading_spinner > div {
+  width: 10px;
+  height: 10px;
+  background-color: #FF8E2D;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+#loading_spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+#loading_spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {-webkit-transform: scale(0)}
+  40% {-webkit-transform: scale(1.0)}
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

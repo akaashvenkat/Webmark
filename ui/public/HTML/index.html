@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="WebMark Homepage" />
+    <meta property="og:image" content="../images/metalogo.png" />
+
+    <link rel="stylesheet" href="../css/index.css"></link>
+    <link href="//fonts.googleapis.com/css2?family=Nunito+Sans" rel="stylesheet"  type="text/css">
+
+    <title>WebMark Homepage</title>
+
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="744549546542-aoklr7c03ap04k82sknifa021mgar1pv.apps.googleusercontent.com">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../Javascript/confirm_password.js" defer></script>
+    <script src="../Javascript/signin_functions.js" defer></script>
+
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId());
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+
+      var modal = document.getElementById('id01');
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+    </script>
+
+    <title>WebMark</title>
+
+    <body>
+
+      <div id="header">
+        <img id="logo" src="../images/logo.png">
+        <button id="signin_button" type="button" onclick="signin()">Sign In</button>
+      </div>
+
+      <div id="midsection">
+        <div id="leftmid">
+          <div id="welcome">Welcome to <br>
+            WebMark
+          </div>
+          <img src="../images/frontpage_photo.png">
+        </div>
+
+        <div id="rightmid">
+          <form id="signupform">
+            <input type="text" id="signup_email" placeholder="Email"><br>
+
+            <div id="passwordrow">
+              <input type="password" id="signup_password" placeholder="Password" onkeyup="checkPass();"><br>
+              <input type="password" id="signup_confirm_password" placeholder="Confirm Password" onkeyup="checkPass();"><br>
+              <span id="signup_confirm_message" class="confirm-message"></span>
+            </div> <br>
+
+            <div id="signupdiv">
+              <button id="signup_button" type="button">Sign Up</button>
+            </div>
+
+            <div id="or">
+              <span>or</span>
+            </div>
+
+            <div id="googlesignupdiv">
+              <div class='g-sign-in-button'>
+                <div class=content-wrapper>
+                  <div class='logo-wrapper'>
+                    <img src='https://developers.google.com/identity/images/g-logo.png'>
+                  </div>
+
+                  <span class='text-container'>
+                    <span>
+                      Sign up with Google
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <br>
+          </form>
+        </div>
+      </div>
+
+      <div id="id01" class="modal">
+        <form class="modal-content animate" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          </div>
+
+          <div class="container">
+            <input type="text" id="signin_email" placeholder="Email" name="eml" required>
+            <input type="password" id="signin_password" placeholder="Password" name="psw" required>
+
+            <div id="login_fp">
+            <button id="login_button" type="button" style="font-size: 18px">
+              Login
+            </button>
+            <span class="psw">Forgot <a href="#" id="forgot_password_button" onclick="forgot_password()">password</a> ?</span>
+            </div>
+
+          </div>
+
+          <div id="orsignin">
+            <span>
+              or
+            </span>
+          </div>
+
+          <div id="googlesignindiv">
+            <div class='g-sign-in-button'>
+              <div class=content-wrapper>
+                <div class='logo-wrapper'>
+                  <img src='https://developers.google.com/identity/images/g-logo.png'>
+                </div>
+                <span class='text-container'>
+                  <span>
+                    Sign in with Google
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="fp" class="modal">
+        <form class="modal-content animate" method="post">
+          <div class="imgcontainer">
+            <span onclick="go_back_to_signin()" class="close" title="Close Modal">&times;</span>
+          </div>
+
+          <div class="container">
+            <input type="text" id="reset_password_email" placeholder="Email" name="eml" required>
+            <button id="reset_password_button" type="button" style="font-size: 18px">Reset Password</button>
+          </div>
+        </form>
+      </div>
+
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+      <script src="../config/config.js"></script>
+      <script src="../Javascript/email_auth.js"></script>
+
+    </body>
+</html>
