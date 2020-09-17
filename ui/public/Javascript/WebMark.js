@@ -421,7 +421,7 @@ async function displayWebMarks() {
         five_mark.appendChild(five_close);
       }
     }
-
+    
     items_array = document.querySelectorAll(".mark");
 
     items_array.forEach(function(item) {

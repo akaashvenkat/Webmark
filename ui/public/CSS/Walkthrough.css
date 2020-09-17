@@ -20,6 +20,21 @@ body {
 	border-bottom: 1px solid black;
 }
 
+h1{
+	display: flex;
+	margin: 75px auto 0px auto;
+	flex-direction: row;
+	align-content: center;
+	padding: 0px 2.5%;
+}
+
+h3{
+	display: flex;
+	margin: 0px auto 50px auto;
+	align-content: center;
+	padding: 0px 2.5%;
+}
+
 @media only screen and (max-width: 500px) {
 	#logo{
 		width: 140px;
@@ -34,7 +49,6 @@ body {
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 100px;
 }
 
 .item {

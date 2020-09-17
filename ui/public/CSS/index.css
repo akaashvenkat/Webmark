@@ -91,9 +91,22 @@ body {
 		width: 300px;
 	}
 }
-#welcome {
-	font-size: 72px;
+
+#leftmid img{
+	max-width: 90%;
+	margin: 25px -10px;
 }
+
+@media only screen and (max-width: 900px) {
+	#leftmid img{
+		max-width: 100%;
+	}
+}
+
+#welcome {
+	font-size: 54px;
+}
+
 
 @media only screen and (max-width: 500px) {
 	#welcome {
