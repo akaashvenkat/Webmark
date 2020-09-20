@@ -237,7 +237,7 @@ async function displayWebMarks() {
         if (items[counter][2] == "screenshot unavailable") {
           one_img = document.createElement('IMG');
           one_img.setAttribute("class", "WebMark_img");
-          one_img.src = "../images/unavailable.png"
+          one_img.src = "{{ url_for('static', filename='media/unavailable.png') }}"
           one_mark.appendChild(one_img);
         }
 
@@ -287,7 +287,7 @@ async function displayWebMarks() {
         if (items[counter][2] == "screenshot unavailable") {
           two_img = document.createElement('IMG');
           two_img.setAttribute("class", "WebMark_img");
-          two_img.src = "../images/unavailable.png"
+          two_img.src = "{{ url_for('static', filename='media/unavailable.png') }}"
           two_mark.appendChild(two_img);
         }
 
@@ -322,7 +322,7 @@ async function displayWebMarks() {
         if (items[counter][2] == "screenshot unavailable") {
           three_img = document.createElement('IMG');
           three_img.setAttribute("class", "WebMark_img");
-          three_img.src = "../images/unavailable.png"
+          three_img.src = "{{ url_for('static', filename='media/unavailable.png') }}"
           three_mark.appendChild(three_img);
         }
 
@@ -362,7 +362,7 @@ async function displayWebMarks() {
         if (items[counter][2] == "screenshot unavailable") {
           four_img = document.createElement('IMG');
           four_img.setAttribute("class", "WebMark_img");
-          four_img.src = "../images/unavailable.png"
+          four_img.src = "{{ url_for('static', filename='media/unavailable.png') }}"
           four_mark.appendChild(four_img);
         }
 
@@ -397,7 +397,7 @@ async function displayWebMarks() {
         if (items[counter][2] == "screenshot unavailable") {
           five_img = document.createElement('IMG');
           five_img.setAttribute("class", "WebMark_img");
-          five_img.src = "../images/unavailable.png"
+          five_img.src = "{{ url_for('static', filename='media/unavailable.png') }}"
           five_mark.appendChild(five_img);
         }
 
@@ -421,7 +421,7 @@ async function displayWebMarks() {
         five_mark.appendChild(five_close);
       }
     }
-    
+
     items_array = document.querySelectorAll(".mark");
 
     items_array.forEach(function(item) {
@@ -448,7 +448,7 @@ async function start_item_loading() {
   y.style.border = "2px solid #FF8E2D";
   spinner = document.createElement('IMG');
   spinner.setAttribute("id","spinner");
-  spinner.src = "../images/bookmark.png"
+  spinner.src = "{{ url_for('static', filename='media/bookmark.png') }}"
   y.appendChild(spinner);
 }
 
@@ -469,7 +469,7 @@ async function displayFirstWebMark() {
   if (items[counter][2] == "screenshot unavailable") {
     one_img = document.createElement('IMG');
     one_img.setAttribute("class", "WebMark_img");
-    one_img.src = "../images/unavailable.png"
+    one_img.src = "{{ url_for('static', filename='media/unavailable.png') }}"
     item.replaceChild(one_img, item.childNodes[0]);
   }
 
