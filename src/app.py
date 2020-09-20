@@ -8,7 +8,7 @@ from src.UsersAPI import users_api
 import firebase_admin
 
 
-cred = credentials.Certificate("/Users/akaashvenkat/Desktop/Webmark/instance/webmark_firebase_admin_key.json")
+cred = credentials.Certificate("full_path_to/instance/webmark_firebase_admin_key.json")
 firebase_admin.initialize_app(cred)
 
 app = Flask(__name__)
