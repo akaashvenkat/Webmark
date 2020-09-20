@@ -30,7 +30,7 @@
 
     auth.createUserWithEmailAndPassword(email, pass)
       .then(function(result) {
-        window.location.assign("./Walkthrough.html")
+        window.location.assign("./walkthrough")
       })
       .catch(function(error) {
         if (error.code == 'auth/email-already-in-use') {
@@ -73,7 +73,7 @@
           .then(function (idToken) {
             updateToken(idToken)
               .then(function(result) {
-                window.location.assign("./WebMark.html")
+                window.location.assign("./webmarks")
             });
 	        })
           .catch(function (error) {
