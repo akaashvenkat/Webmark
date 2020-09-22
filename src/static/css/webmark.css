@@ -40,6 +40,24 @@ iframe {
 	}
 }
 
+#signin_button {
+	width: 130.6px;
+	height: 40px;
+	color: black;
+	font-size: 18px;
+	background-color: #FF8E2D;
+	border-radius: 8px;
+	border-color: black;
+	cursor: pointer;
+	margin-right: 15px;
+}
+
+@media only screen and (max-width: 900px) {
+	#signin_button {
+		margin-right: 0px;
+	}
+}
+
 #spinner {
   width: 10%;
   background-color: #ECECE2;
