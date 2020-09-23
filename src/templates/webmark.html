@@ -7,10 +7,34 @@
     <meta property="og:image" content="{{ url_for('static', filename='media/metalogo.png') }}" />
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='media/bookmark.png') }}" type="image/png">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/webmark.css') }}"></link>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans" rel="stylesheet"  type="text/css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='javascript/signin_functions.js') }}" defer></script>
+
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId());
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+
+      var modal = document.getElementById('id01');
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
 
     <title>WebMark</title>
 
@@ -25,6 +49,61 @@
       <input id="enter_link" type="url" placeholder="Upload Link Here">
     </div>
 
+    <div id="id01" class="modal">
+      <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="signin_close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+          <input type="text" id="signin_email" placeholder="Email" name="eml" required>
+          <input type="password" id="signin_password" placeholder="Password" name="psw" required>
+
+          <div id="login_fp">
+          <button id="login_button" type="button" style="font-size: 18px">
+            Login
+          </button>
+          <span class="psw">Forgot <a href="#" id="forgot_password_button" onclick="forgot_password()">password</a> ?</span>
+          </div>
+
+        </div>
+
+        <div id="orsignin">
+          <span>
+            or
+          </span>
+        </div>
+
+        <div id="googlesignindiv">
+          <div class='g-sign-in-button'>
+            <div class=content-wrapper>
+              <div class='logo-wrapper'>
+                <img src='https://developers.google.com/identity/images/g-logo.png'>
+              </div>
+              <span class='text-container'>
+                <span>
+                  Sign in with Google
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="fp" class="modal">
+      <form class="modal-content animate" method="post">
+        <div class="imgcontainer">
+          <span onclick="go_back_to_signin()" class="signin_close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="container">
+          <input type="text" id="reset_password_email" placeholder="Email" name="eml" required>
+          <button id="reset_password_button" type="button" style="font-size: 18px">Reset Password</button>
+        </div>
+      </form>
+    </div>
+
   </body>
 
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
@@ -33,5 +112,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
   <script src="{{ url_for('static', filename='config/config.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/webmark.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/email_auth.js') }}"></script>
 
 </html>

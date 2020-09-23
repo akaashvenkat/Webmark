@@ -505,6 +505,13 @@ span.psw {
 	color: #4E5166;
 }
 
+#reset_password_email {
+	height: 40px;
+	font-size: 18px;
+	border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
 #googlesignindiv {
 	display: flex;
 	flex-direction: row;
