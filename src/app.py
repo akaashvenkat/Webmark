@@ -25,6 +25,7 @@ def do_something_whenever_a_request_has_been_handled(response):
 
 
 @app.route("/")
+@app.route("/home")
 def home():
     return render_template("index.html")
 
