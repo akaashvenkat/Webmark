@@ -1,10 +1,10 @@
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGE_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyA-fr3qhU2huzoAD3p6zshxzyVp8jTWaDk",
+  authDomain: "webmark-65b53.firebaseapp.com",
+  databaseURL: "https://webmark-65b53.firebaseio.com",
+  projectId: "webmark-65b53",
+  storageBucket: "webmark-65b53.appspot.com",
+  messagingSenderId: "744549546542",
+  appId: "1:744549546542:web:6bc781a86ae17921e03dbf",
+  measurementId: "G-YPDG9M96XV"
 };
