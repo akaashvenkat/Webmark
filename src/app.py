@@ -12,7 +12,7 @@ firebase_auth_creds = {
   "type": "service_account",
   "project_id": environ["FIREBASE_PROJECT_ID"],
   "private_key_id": environ["FIREBASE_PRIVATE_KEY_ID"],
-  "private_key": environ["FIREBASE_PRIVATE_KEY"],
+  "private_key": environ["FIREBASE_PRIVATE_KEY"].replace('\\n', '\n'),
   "client_email": environ["FIREBASE_CLIENT_EMAIL"],
   "client_id": environ["FIREBASE_CLIENT_ID"],
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
