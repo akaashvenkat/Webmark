@@ -4,9 +4,11 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta property="og:title" content="WebMark Walkthrough" />
-		<meta property="og:image" content="../images/metalogo.png" />
+		<meta property="og:image" content="{{ url_for('static', filename='media/metalogo.png') }}" />
 
-		<link rel="stylesheet" href="../css/Walkthrough.css"></link>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='media/bookmark.png') }}" type="image/png">
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/walkthrough.css') }}"></link>
 		<link href="//fonts.googleapis.com/css2?family=Nunito+Sans" rel="stylesheet"  type="text/css">
 
 		<title>WebMark Walkthrough</title>
@@ -16,7 +18,7 @@
 	<body>
 
 		<div id="header">
-			<img id="logo" src="../images/logo.png" onclick="location.href = 'Walkthrough.html';">
+			<img id="logo" src="{{ url_for('static', filename='media/logo.png') }}" onclick="location.href = 'walkthrough';">
 		</div>
 		<h1>How To Use WebMark</h1>
 		<h3>Note: WebMark is optimized for desktop usage</h3>
@@ -24,21 +26,21 @@
 
 			<div class = "item">
 				<video id="one"  controls>
-					<source src="../videos/walkthrough_1.mov"  type="video/mp4">
+					<source src="{{ url_for('static', filename='media/walkthrough1.mov') }}" type="video/mp4">
 				</video>
 				<p>Add websites, videos, and pictures</p>
 			</div>
 
 			<div class = "item">
 				<video id="two"  controls>
-	  			<source src="../videos/walkthrough_2.mov"  type="video/mp4">
+	  			<source src="{{ url_for('static', filename='media/walkthrough2.mov') }}" type="video/mp4">
 	  		</video>
 	  		<p>Click your WebMarks to go to the sites</p>
   		</div>
 
 			<div class = "item">
 				<video id="three"  controls>
-	  			<source src="../videos/walkthrough_3.mov"  type="video/mp4">
+	  			<source src="{{ url_for('static', filename='media/walkthrough3.mov') }}" type="video/mp4">
 	  		</video>
 	  		<p>Delete Webmarks</p>
   		</div>
@@ -46,8 +48,8 @@
 		</div>
 
 		<div id="continue">
-			<button id="continue_button" type="button"  onclick="location.href = 'WebMark.html';">Continue</button>
+			<button id="continue_button" type="button"  onclick="location.href = 'webmarks';">Continue</button>
 		</div>
-		
+
 	</body>
 </html>

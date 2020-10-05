@@ -6,9 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="WebMark Homepage" />
-    <meta property="og:image" content="../images/metalogo.png" />
+    <meta property="og:image" content="{{ url_for('static', filename='media/metalogo.png') }}" />
 
-    <link rel="stylesheet" href="../css/index.css"></link>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='media/bookmark.png') }}" type="image/png">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"></link>
     <link href="//fonts.googleapis.com/css2?family=Nunito+Sans" rel="stylesheet"  type="text/css">
 
     <title>WebMark Homepage</title>
@@ -17,8 +19,8 @@
     <meta name="google-signin-client_id" content="744549546542-aoklr7c03ap04k82sknifa021mgar1pv.apps.googleusercontent.com">
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="../Javascript/confirm_password.js" defer></script>
-    <script src="../Javascript/signin_functions.js" defer></script>
+    <script src="{{ url_for('static', filename='javascript/confirm_password.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='javascript/signin_functions.js') }}" defer></script>
 
     <script>
       function onSignIn(googleUser) {
@@ -49,7 +51,7 @@
     <body>
 
       <div id="header">
-        <img id="logo" src="../images/logo.png">
+        <img id="logo" src="{{ url_for('static', filename='media/logo.png') }}">
         <button id="signin_button" type="button" onclick="signin()">Sign In</button>
       </div>
 
@@ -58,7 +60,7 @@
           <div id="welcome">Welcome to <br>
             WebMark
           </div>
-          <img src="../images/homepage_pic.png">
+          <img src="{{ url_for('static', filename='media/homepage.png') }}">
         </div>
 
         <div id="rightmid">
@@ -159,8 +161,8 @@
       <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-      <script src="../config/config.js"></script>
-      <script src="../Javascript/email_auth.js"></script>
+      <script src="{{ url_for('static', filename='config/config.js') }}"></script>
+      <script src="{{ url_for('static', filename='javascript/email_auth.js') }}"></script>
 
     </body>
 </html>

@@ -1,5 +1,5 @@
 from firebase_admin import credentials
-from flask import Flask, g
+from flask import Flask, g, render_template
 from flask_cors import CORS, cross_origin
 from flask_httpauth import HTTPTokenAuth
 from src.ItemsAPI import items_api
@@ -25,19 +25,17 @@ def do_something_whenever_a_request_has_been_handled(response):
 
 
 @app.route("/")
-def hello():
-    return "API is up and running!", 200
+@app.route("/home")
+def home():
+    return render_template("index.html")
 
+@app.route("/walkthrough")
+def walkthrough():
+    return render_template("walkthrough.html")
 
-@app.route("/status")
-def status():
-    return "Ok!", 200
-
-
-@app.route("/authreq")
-@auth.login_required
-def authreq():
-    return "blah"
+@app.route("/webmarks")
+def webmarks():
+    return render_template("webmark.html")
 
 
 if __name__ == "__main__":
