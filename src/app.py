@@ -8,8 +8,19 @@ from src.TokenAuthentication import auth
 from src.UsersAPI import users_api
 import firebase_admin
 
-
-cred = credentials.Certificate(environ["python_config_json"])
+firebase_auth_creds = {
+  "type": "service_account",
+  "project_id": environ["FIREBASE_PROJECT_ID"],
+  "private_key_id": environ["FIREBASE_PRIVATE_KEY_ID"],
+  "private_key": environ["FIREBASE_PRIVATE_KEY"],
+  "client_email": environ["FIREBASE_CLIENT_EMAIL"],
+  "client_id": environ["FIREBASE_CLIENT_ID"],
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": environ["FIREBASE_CLIENT_X509_CERT_URL"]
+}
+cred = credentials.Certificate(firebase_auth_creds)
 firebase_admin.initialize_app(cred)
 
 app = Flask(__name__)
