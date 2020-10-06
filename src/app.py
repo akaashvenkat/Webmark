@@ -23,7 +23,7 @@ firebase_auth_creds = {
 cred = credentials.Certificate(firebase_auth_creds)
 firebase_admin.initialize_app(cred)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.register_blueprint(items_api, url_prefix='/items')
 app.register_blueprint(users_api, url_prefix='/users')
 
