@@ -25,7 +25,7 @@ window.addEventListener('load', (event) => {
 async function getWebMarks() {
   const auth = firebase.auth();
 
-  var server = "http://0.0.0.0:33507";
+  var server = "http://webmark-project.herokuapp.com:33507";
   var appdir = "/items/user";
 
   $.ajax({
@@ -110,7 +110,7 @@ function addWebMark() {
   }
 
   var url_data = {"url": newInput};
-  var server = "http://0.0.0.0:33507";
+  var server = "http://webmark-project.herokuapp.com:33507";
   var appdir = "/items/create";
 
   $.ajax({
@@ -176,7 +176,7 @@ async function deleteExistingItem(webmark_id) {
 function deleteWebMark(webmark_id) {
   const auth = firebase.auth();
 
-  var server = "http://0.0.0.0:33507";
+  var server = "http://webmark-project.herokuapp.com:33507";
   var appdir = "/items/delete/" + webmark_id;
 
   $.ajax({
