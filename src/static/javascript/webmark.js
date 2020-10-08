@@ -27,7 +27,7 @@ async function getWebMarks() {
 
   $.ajax({
     type: "GET",
-    url: "{{url_for('/items/user')}}",
+    url: "/items/user",
     data: {},
     contentType: "application/x-www-form-urlencoded",
     headers: {
@@ -110,7 +110,7 @@ function addWebMark() {
 
   $.ajax({
     type: "POST",
-    url: "{{url_for('/items/create')}}",
+    url: "/items/create",
     data: url_data,
     dataType: "json",
     contentType: "application/x-www-form-urlencoded",
@@ -171,11 +171,9 @@ async function deleteExistingItem(webmark_id) {
 function deleteWebMark(webmark_id) {
   const auth = firebase.auth();
 
-  var appdir = "/items/delete/" + webmark_id;
-
   $.ajax({
     type: "DELETE",
-    url: "{{url_for('" + appdir + "')}}",
+    url: "/items/delete/" + webmark_id,
     data: {},
     headers: {
       "Authorization": "token " + token,
