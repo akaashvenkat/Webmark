@@ -10,6 +10,9 @@ import requests
 import sys
 
 
+GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
+CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
+
 items_api = Blueprint('items_api', __name__)
 
 
@@ -203,10 +206,13 @@ def validate_url(url):
 
 def get_base_64(url):
 
-    options = webdriver.ChromeOptions()
-    options.headless = True
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.headless = True
+	chrome_options.add_argument('--disable-gpu')
+	chrome_options.add_argument('--no-sandbox')
+	chrome_options.binary_location = GOOGLE_CHROME_PATH
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(execution_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
     driver.set_window_size(1024, 768)
 
     try:
