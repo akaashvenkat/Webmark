@@ -25,12 +25,9 @@ window.addEventListener('load', (event) => {
 async function getWebMarks() {
   const auth = firebase.auth();
 
-  var server = "http://127.0.0.1:5000";
-  var appdir = "/items/user";
-
   $.ajax({
     type: "GET",
-    url: server + appdir,
+    url: "{{url_for('/items/user')}}",
     data: {},
     contentType: "application/x-www-form-urlencoded",
     headers: {
@@ -110,12 +107,10 @@ function addWebMark() {
   }
 
   var url_data = {"url": newInput};
-  var server = "http://127.0.0.1:5000";
-  var appdir = "/items/create";
 
   $.ajax({
     type: "POST",
-    url: server + appdir,
+    url: "{{url_for('/items/create')}}",
     data: url_data,
     dataType: "json",
     contentType: "application/x-www-form-urlencoded",
@@ -176,12 +171,11 @@ async function deleteExistingItem(webmark_id) {
 function deleteWebMark(webmark_id) {
   const auth = firebase.auth();
 
-  var server = "http://127.0.0.1:5000";
   var appdir = "/items/delete/" + webmark_id;
 
   $.ajax({
     type: "DELETE",
-    url: server + appdir,
+    url: "{{url_for('" + appdir + "')}}",
     data: {},
     headers: {
       "Authorization": "token " + token,
