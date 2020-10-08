@@ -3,7 +3,6 @@ items = [];
 var config = firebaseConfig;
 firebase.initializeApp(config);
 
-var port = process.env.PORT || 5000;
 var token = sessionStorage.getItem('token');
 var enter_link = document.getElementById('enter_link');
 var sign_in_button = document.getElementById('signin_button');
@@ -26,7 +25,7 @@ window.addEventListener('load', (event) => {
 async function getWebMarks() {
   const auth = firebase.auth();
 
-  var server = "http://127.0.0.1:" + port;
+  var server = "http://127.0.0.1:33507";
   var appdir = "/items/user";
 
   $.ajax({
@@ -111,7 +110,7 @@ function addWebMark() {
   }
 
   var url_data = {"url": newInput};
-  var server = "http://127.0.0.1:" + port;
+  var server = "http://127.0.0.1:33507";
   var appdir = "/items/create";
 
   $.ajax({
@@ -177,7 +176,7 @@ async function deleteExistingItem(webmark_id) {
 function deleteWebMark(webmark_id) {
   const auth = firebase.auth();
 
-  var server = "http://127.0.0.1:" + port;
+  var server = "http://127.0.0.1:33507";
   var appdir = "/items/delete/" + webmark_id;
 
   $.ajax({
