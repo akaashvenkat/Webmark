@@ -34,8 +34,7 @@ async function getWebMarks() {
     data: {},
     contentType: "application/x-www-form-urlencoded",
     headers: {
-      "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks"
+      "Authorization": "token " + token
     },
     success: function(res) {
       addExistingItems(res)
@@ -121,8 +120,7 @@ function addWebMark() {
     dataType: "json",
     contentType: "application/x-www-form-urlencoded",
     headers: {
-      "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks"
+      "Authorization": "token " + token
     },
     success: function(res) {
       addNewDetailedItem(res.item_id, res.url, res.screenshot)
@@ -187,7 +185,6 @@ function deleteWebMark(webmark_id) {
     data: {},
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks",
       'Content-Type': 'application/json'
     },
     success: function(res) {
