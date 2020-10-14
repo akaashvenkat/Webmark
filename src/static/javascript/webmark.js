@@ -35,7 +35,7 @@ async function getWebMarks() {
     contentType: "application/x-www-form-urlencoded",
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks"
+      "Access-Control-Allow-Origin": "http://www.webmark-project.herokuapp.com/webmarks"
     },
     success: function(res) {
       addExistingItems(res)
@@ -122,7 +122,7 @@ function addWebMark() {
     contentType: "application/x-www-form-urlencoded",
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks"
+      "Access-Control-Allow-Origin": "http://www.webmark-project.herokuapp.com/webmarks"
     },
     success: function(res) {
       addNewDetailedItem(res.item_id, res.url, res.screenshot)
@@ -187,7 +187,7 @@ function deleteWebMark(webmark_id) {
     data: {},
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks",
+      "Access-Control-Allow-Origin": "http://www.webmark-project.herokuapp.com/webmarks",
       'Content-Type': 'application/json'
     },
     success: function(res) {
