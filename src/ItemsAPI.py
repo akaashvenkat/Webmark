@@ -1,6 +1,7 @@
 from datetime import datetime
 from firebase_admin import firestore
 from flask import Blueprint, request, g
+from os import environ
 from requests.exceptions import ConnectionError, InvalidURL
 from selenium import webdriver
 from src.Item import Item
@@ -203,10 +204,14 @@ def validate_url(url):
 
 def get_base_64(url):
 
-    options = webdriver.ChromeOptions()
-    options.headless = True
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-sh-usage')
+    chrome_options.binary_location = environ["GOOGLE_CHROME_BIN"]
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(executable_path=environ["CHROMEDRIVER_PATH"], chrome_options=chrome_options)
     driver.set_window_size(1024, 768)
 
     try:
@@ -221,10 +226,14 @@ def get_base_64(url):
 
 def get_smaller_base_64(url):
 
-    options = webdriver.ChromeOptions()
-    options.headless = True
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-sh-usage')
+    chrome_options.binary_location = environ["GOOGLE_CHROME_BIN"]
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(executable_path=environ["CHROMEDRIVER_PATH"], chrome_options=chrome_options)
     driver.set_window_size(665, 500)
 
     try:
