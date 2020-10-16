@@ -138,6 +138,8 @@
   });
 
   googleSignUp.addEventListener('click', e => {
+    const auth = firebase.auth();
+    
     auth.signInWithPopup(provider)
       .then(function(result) {
         auth.currentUser.getIdToken(true)
@@ -159,6 +161,8 @@
   });
 
   googleSignIn.addEventListener('click', e => {
+    const auth = firebase.auth();
+
     auth.signInWithPopup(provider)
       .then(function(result) {
         auth.currentUser.getIdToken(true)
