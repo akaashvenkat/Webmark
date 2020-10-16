@@ -139,7 +139,8 @@
 
   googleSignUp.addEventListener('click', e => {
     const auth = firebase.auth();
-    
+    var provider = new firebase.auth.GoogleAuthProvider();
+
     auth.signInWithPopup(provider)
       .then(function(result) {
         auth.currentUser.getIdToken(true)
@@ -162,6 +163,7 @@
 
   googleSignIn.addEventListener('click', e => {
     const auth = firebase.auth();
+    var provider = new firebase.auth.GoogleAuthProvider();
 
     auth.signInWithPopup(provider)
       .then(function(result) {
