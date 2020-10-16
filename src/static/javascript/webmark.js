@@ -247,7 +247,7 @@ async function displayWebMarks() {
 
         if (items[counter][2] == "screenshot unavailable") {
           one_img = document.createElement('IMG');
-          one_img.setAttribute("class", "WebMark_img");
+          one_img.setAttribute("class", "WebMark_unavailable_img");
           one_img.src = "static/media/unavailable.png";
           one_mark.appendChild(one_img);
         }
@@ -297,7 +297,7 @@ async function displayWebMarks() {
 
         if (items[counter][2] == "screenshot unavailable") {
           two_img = document.createElement('IMG');
-          two_img.setAttribute("class", "WebMark_img");
+          two_img.setAttribute("class", "WebMark_unavailable_img");
           two_img.src = "static/media/unavailable.png";
           two_mark.appendChild(two_img);
         }
@@ -332,7 +332,7 @@ async function displayWebMarks() {
 
         if (items[counter][2] == "screenshot unavailable") {
           three_img = document.createElement('IMG');
-          three_img.setAttribute("class", "WebMark_img");
+          three_img.setAttribute("class", "WebMark_unavailable_img");
           three_img.src = "static/media/unavailable.png";
           three_mark.appendChild(three_img);
         }
@@ -372,7 +372,7 @@ async function displayWebMarks() {
 
         if (items[counter][2] == "screenshot unavailable") {
           four_img = document.createElement('IMG');
-          four_img.setAttribute("class", "WebMark_img");
+          four_img.setAttribute("class", "WebMark_unavailable_img");
           four_img.src = "static/media/unavailable.png";
           four_mark.appendChild(four_img);
         }
@@ -407,7 +407,7 @@ async function displayWebMarks() {
 
         if (items[counter][2] == "screenshot unavailable") {
           five_img = document.createElement('IMG');
-          five_img.setAttribute("class", "WebMark_img");
+          five_img.setAttribute("class", "WebMark_unavailable_img");
           five_img.src = "static/media/unavailable.png";
           five_mark.appendChild(five_img);
         }
@@ -479,7 +479,7 @@ async function displayFirstWebMark() {
 
   if (items[counter][2] == "screenshot unavailable") {
     one_img = document.createElement('IMG');
-    one_img.setAttribute("class", "WebMark_img");
+    one_img.setAttribute("class", "WebMark_unavailable_img");
     one_img.src = "static/media/unavailable.png";
     item.replaceChild(one_img, item.childNodes[0]);
   }

@@ -159,6 +159,13 @@ input:focus::placeholder {
 	object-position: 0 0;
 }
 
+.WebMark_unavailable_img {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
 #firstrow {
 	display: flex;
 	margin-bottom: 50px;
