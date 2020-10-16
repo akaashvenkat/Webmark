@@ -147,7 +147,7 @@
           .then(function (idToken) {
             updateToken(idToken)
               .then(function(result) {
-                window.location.assign("./webmarks")
+                window.location.assign("./walkthrough")
             });
           })
           .catch(function (error) {
