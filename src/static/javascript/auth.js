@@ -137,29 +137,31 @@
     });
   });
 
-  googleSignUp.addEventListener('click', e => {
-    const auth = firebase.auth();
-    var provider = new firebase.auth.GoogleAuthProvider();
+  if (googleSignUp) {
+    googleSignUp.addEventListener('click', e => {
+      const auth = firebase.auth();
+      var provider = new firebase.auth.GoogleAuthProvider();
 
-    auth.signInWithPopup(provider)
-      .then(function(result) {
-        auth.currentUser.getIdToken(true)
-          .then(function (idToken) {
-            updateToken(idToken)
-              .then(function(result) {
-                window.location.assign("./walkthrough")
-            });
-          })
-          .catch(function (error) {
-            self.text = "ERROR:" + error.message;
-        });
-      })
-      .catch(function(error) {
-        alert(error.message);
-        console.log(error);
-        return;
+      auth.signInWithPopup(provider)
+        .then(function(result) {
+          auth.currentUser.getIdToken(true)
+            .then(function (idToken) {
+              updateToken(idToken)
+                .then(function(result) {
+                  window.location.assign("./walkthrough")
+              });
+            })
+            .catch(function (error) {
+              self.text = "ERROR:" + error.message;
+          });
+        })
+        .catch(function(error) {
+          alert(error.message);
+          console.log(error);
+          return;
+      });
     });
-  });
+  }
 
   googleSignIn.addEventListener('click', e => {
     const auth = firebase.auth();

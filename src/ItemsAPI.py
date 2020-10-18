@@ -45,7 +45,7 @@ def create_item():
     order = 0
     owner_uid = g.uid
 
-    if len(screenshot) > 1048480:
+    if screenshot == "screenshot unavailable" or len(screenshot) > 1048480:
         screenshot = get_smaller_base_64(url)
         if screenshot == False:
             screenshot = "screenshot unavailable"
@@ -234,7 +234,7 @@ def get_smaller_base_64(url):
     chrome_options.binary_location = environ["GOOGLE_CHROME_BIN"]
 
     driver = webdriver.Chrome(executable_path=environ["CHROMEDRIVER_PATH"], chrome_options=chrome_options)
-    driver.set_window_size(665, 500)
+    driver.set_window_size(500, 400)
 
     try:
         driver.get(url)
