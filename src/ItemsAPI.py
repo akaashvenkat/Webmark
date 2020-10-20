@@ -13,6 +13,12 @@ import sys
 
 items_api = Blueprint('items_api', __name__)
 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-sh-usage')
+chrome_options.binary_location = environ["GOOGLE_CHROME_BIN"]
 
 @items_api.route('/create', methods=['POST'])
 @auth.login_required
@@ -225,13 +231,6 @@ def get_base_64(url):
 
 
 def get_smaller_base_64(url):
-
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-sh-usage')
-    chrome_options.binary_location = environ["GOOGLE_CHROME_BIN"]
 
     driver = webdriver.Chrome(executable_path=environ["CHROMEDRIVER_PATH"], chrome_options=chrome_options)
     driver.set_window_size(500, 400)
