@@ -214,7 +214,7 @@ def get_base_64(url):
     except Exception as e:
         base_64 = False
 
-    if len(base_64) > 1048480:
+    if base_64 == False or len(base_64) > 1048480:
         try:
             driver.set_window_size(620, 480)
             base_64 = driver.get_screenshot_as_base64()
