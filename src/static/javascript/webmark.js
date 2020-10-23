@@ -25,7 +25,7 @@ window.addEventListener('load', (event) => {
 async function getWebMarks() {
   const auth = firebase.auth();
 
-  var server = "http://webmark-project.herokuapp.com";
+  var server = "https://webmark-project.herokuapp.com";
   var appdir = "/items/user";
 
   $.ajax({
@@ -35,7 +35,7 @@ async function getWebMarks() {
     contentType: "application/x-www-form-urlencoded",
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "http://www.webmark-project.herokuapp.com/webmarks"
+      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks"
     },
     success: function(res) {
       addExistingItems(res)
@@ -111,7 +111,7 @@ function addWebMark() {
   }
 
   var url_data = {"url": newInput};
-  var server = "http://webmark-project.herokuapp.com";
+  var server = "https://webmark-project.herokuapp.com";
   var appdir = "/items/create";
 
   $.ajax({
@@ -122,7 +122,7 @@ function addWebMark() {
     contentType: "application/x-www-form-urlencoded",
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "http://www.webmark-project.herokuapp.com/webmarks"
+      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks"
     },
     success: function(res) {
       addNewDetailedItem(res.item_id, res.url, res.screenshot)
@@ -178,7 +178,7 @@ async function deleteExistingItem(webmark_id) {
 function deleteWebMark(webmark_id) {
   const auth = firebase.auth();
 
-  var server = "http://webmark-project.herokuapp.com";
+  var server = "https://webmark-project.herokuapp.com";
   var appdir = "/items/delete/" + webmark_id;
 
   $.ajax({
@@ -187,7 +187,7 @@ function deleteWebMark(webmark_id) {
     data: {},
     headers: {
       "Authorization": "token " + token,
-      "Access-Control-Allow-Origin": "http://www.webmark-project.herokuapp.com/webmarks",
+      "Access-Control-Allow-Origin": "https://www.webmark-project.herokuapp.com/webmarks",
       'Content-Type': 'application/json'
     },
     success: function(res) {
