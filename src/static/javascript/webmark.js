@@ -3,7 +3,8 @@ items = [];
 var config = firebaseConfig;
 firebase.initializeApp(config);
 
-var token = "";
+//var token = sessionStorage.getItem('token');
+var token = document.cookie.split("cookieToken=")[1];
 var enter_link = document.getElementById('enter_link');
 var sign_in_button = document.getElementById('signin_button');
 var webmark_logo = document.getElementById('logo');
@@ -15,23 +16,10 @@ async function addExistingItems(existing_items) {
   }
 };
 
-async function updateToken(tok) {
-  token = tok;
-}
-
 window.addEventListener('load', (event) => {
   start_loading_popup()
     .then(function(result) {
-      firebase.auth().currentUser.getIdToken(true)
-        .then(function (idToken) {
-          updateToken(idToken)
-            .then(function(result) {
-              getWebMarks();
-          });
-        })
-        .catch(function (error) {
-          self.text = "ERROR:" + error.message;
-      });
+      getWebMarks();
     });
 });
 

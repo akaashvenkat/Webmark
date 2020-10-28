@@ -63,7 +63,8 @@
   }
 
   async function updateToken(tok) {
-    sessionStorage.setItem('token', tok)
+    //sessionStorage.setItem('token', tok)
+    document.cookie = "cookieToken=" + tok;
   }
 
   buttonSignIn.addEventListener('click', e => {
