@@ -3,7 +3,6 @@ items = [];
 var config = firebaseConfig;
 firebase.initializeApp(config);
 
-//var token = sessionStorage.getItem('token');
 var token = document.cookie.split("cookieToken=")[1];
 var enter_link = document.getElementById('enter_link');
 var sign_in_button = document.getElementById('signin_button');
