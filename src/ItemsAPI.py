@@ -1,6 +1,7 @@
 from datetime import datetime
 from firebase_admin import firestore
 from flask import Blueprint, request, g
+from os import environ
 from requests.exceptions import ConnectionError, InvalidURL
 from selenium import webdriver
 from src.Item import Item
@@ -11,7 +12,6 @@ import sys
 
 
 items_api = Blueprint('items_api', __name__)
-
 
 @items_api.route('/create', methods=['POST'])
 @auth.login_required
@@ -45,12 +45,7 @@ def create_item():
     owner_uid = g.uid
 
     if len(screenshot) > 1048480:
-        screenshot = get_smaller_base_64(url)
-        if screenshot == False:
-            screenshot = "screenshot unavailable"
-
-        if len(screenshot) > 1048480:
-            return {'error': 'The WebMark you are trying to add contains too many megabytes. Please try a different WebMark.'}, 500
+        return {'error': 'The WebMark you are trying to add contains too many megabytes. Please try a different WebMark.'}, 500
 
     response, response_code = get_items()
     if len(response) != 0:
@@ -203,10 +198,15 @@ def validate_url(url):
 
 def get_base_64(url):
 
-    options = webdriver.ChromeOptions()
-    options.headless = True
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--single-process')
+    chrome_options.binary_location = environ["GOOGLE_CHROME_BIN"]
 
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(executable_path=environ["CHROMEDRIVER_PATH"], chrome_options=chrome_options)
     driver.set_window_size(1024, 768)
 
     try:
@@ -215,23 +215,12 @@ def get_base_64(url):
     except Exception as e:
         base_64 = False
 
-    driver.quit()
-    return base_64
-
-
-def get_smaller_base_64(url):
-
-    options = webdriver.ChromeOptions()
-    options.headless = True
-
-    driver = webdriver.Chrome(options=options)
-    driver.set_window_size(665, 500)
-
-    try:
-        driver.get(url)
-        base_64 = driver.get_screenshot_as_base64()
-    except Exception as e:
-        base_64 = False
+    if base_64 == False or len(base_64) > 1048480:
+        try:
+            driver.set_window_size(665, 500)
+            base_64 = driver.get_screenshot_as_base64()
+        except Exception as e:
+            base_64 = False
 
     driver.quit()
     return base_64
