@@ -63,7 +63,6 @@
   }
 
   async function updateToken(tok) {
-    //sessionStorage.setItem('token', tok)
     document.cookie = "cookieToken=" + tok;
   }
 
