@@ -13,6 +13,8 @@
   const buttonSignIn = document.getElementById('login_button');
   const emailPasswordReset = document.getElementById('reset_password_email');
   const buttonPasswordReset = document.getElementById('reset_password_button');
+  const googleSignUp = document.getElementById('googlesignupdiv');
+  const googleSignIn = document.getElementById('googlesignindiv');
 
   if (buttonSignUp) {
     buttonSignUp.addEventListener('click', e => {
@@ -61,7 +63,8 @@
   }
 
   async function updateToken(tok) {
-    sessionStorage.setItem('token', tok)
+    //sessionStorage.setItem('token', tok)
+    document.cookie = "cookieToken=" + tok;
   }
 
   buttonSignIn.addEventListener('click', e => {
@@ -130,6 +133,56 @@
         } else {
           alert(error.message);
         }
+        console.log(error);
+        return;
+    });
+  });
+
+  if (googleSignUp) {
+    googleSignUp.addEventListener('click', e => {
+      const auth = firebase.auth();
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      auth.signInWithPopup(provider)
+        .then(function(result) {
+          auth.currentUser.getIdToken(true)
+            .then(function (idToken) {
+              updateToken(idToken)
+                .then(function(result) {
+                  window.location.assign("./walkthrough")
+              });
+            })
+            .catch(function (error) {
+              self.text = "ERROR:" + error.message;
+          });
+        })
+        .catch(function(error) {
+          alert(error.message);
+          console.log(error);
+          return;
+      });
+    });
+  }
+
+  googleSignIn.addEventListener('click', e => {
+    const auth = firebase.auth();
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider)
+      .then(function(result) {
+        auth.currentUser.getIdToken(true)
+          .then(function (idToken) {
+            updateToken(idToken)
+              .then(function(result) {
+                window.location.assign("./webmarks")
+            });
+          })
+          .catch(function (error) {
+            self.text = "ERROR:" + error.message;
+        });
+      })
+      .catch(function(error) {
+        alert(error.message);
         console.log(error);
         return;
     });

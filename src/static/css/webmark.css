@@ -159,6 +159,13 @@ input:focus::placeholder {
 	object-position: 0 0;
 }
 
+.WebMark_unavailable_img {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
 #firstrow {
 	display: flex;
 	margin-bottom: 50px;
@@ -355,11 +362,22 @@ input:focus::placeholder {
   font-weight: bold;
 }
 
+@media only screen and (max-width: 800px) {
+  #one .close, #two .close, #three .close, #four .close, #five .close {
+  	display: block;
+    position: absolute;
+    top: 0;
+    right: 2%;
+    color: #FF8E2D;
+    font-size: 35px;
+    font-weight: bold;
+  }
+}
 
 #delete_popup {
 	display: flex;
 	margin-right: 92.5%;
-	width: 203px;
+	width: 230px;
 	height: 40px;
 	border: 2px solid red;
 	margin-left: 7.5%;
