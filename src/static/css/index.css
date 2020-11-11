@@ -54,7 +54,7 @@ body {
 }
 
 #midsection {
-	margin: 50px 4.5% 0px 4.5%;
+	margin: auto 4.5% 0px 4.5%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -94,7 +94,7 @@ body {
 
 #leftmid img{
 	max-width: 90%;
-	margin: 25px -10px;
+	margin: -20px -10px 25px -10px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -105,8 +105,13 @@ body {
 
 #welcome {
 	font-size: 54px;
+  margin-top: 50px;
 }
 
+#welcome p {
+  margin-top: 0px;
+	font-size: 36px;
+}
 
 @media only screen and (max-width: 500px) {
 	#welcome {
@@ -118,8 +123,7 @@ body {
 #rightmid {
 	flex-direction: column;
 	width: 50%;
-	border: 1px solid #204720;
-	margin: 0 auto;
+	margin: px auto 0px auto;
 	align-self: center;
 }
 
@@ -134,7 +138,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 10%;
+	padding: 34% 10% 10% 10%;
 	margin: 0 auto;
 }
 
@@ -142,6 +146,7 @@ body {
 	#signupform {
 		align-self: center;
 		width: 400px;
+    padding: 10%;
 	}
 }
 
