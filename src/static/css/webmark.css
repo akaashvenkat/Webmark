@@ -51,6 +51,12 @@ iframe {
 	cursor: pointer;
 	margin-right: 15px;
   visibility: hidden;
+  z-index: 1;
+}
+
+#help_button {
+	right: 30px;
+  position: absolute;
 }
 
 @media only screen and (max-width: 900px) {
