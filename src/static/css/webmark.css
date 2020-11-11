@@ -59,6 +59,10 @@ iframe {
   position: absolute;
 }
 
+#help_button:hover {
+	cursor:pointer;
+}
+
 @media only screen and (max-width: 900px) {
 	#signin_button {
 		margin-right: 0px;
