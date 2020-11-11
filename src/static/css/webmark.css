@@ -54,6 +54,10 @@ iframe {
   z-index: 1;
 }
 
+#signin_button:hover {
+	opacity: 1;
+}
+
 #help_button {
 	right: 30px;
   position: absolute;
