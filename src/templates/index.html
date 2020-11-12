@@ -53,7 +53,14 @@
               A visualization for your web activity
             </p>
           </div>
-          <img src="{{ url_for('static', filename='media/homepage.png') }}">
+          <div class = "item">
+            <p>
+              Preview:
+            </p>
+    				<video controls>
+    	  			<source src="{{ url_for('static', filename='media/homepage.mov') }}" type="video/mp4">
+    	  		</video>
+      		</div>
         </div>
 
         <div id="rightmid">
